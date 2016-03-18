@@ -20,9 +20,14 @@ public class LauncherTest {
         students.add("Mahmoud", 3342, "test@yahoo.com", compu, 0);
         students.add("Magdy", 3341, "Test", compu, 0);
 
+        // getting the 3342 from the students linkedlist
+        SPNode me2 = students.getNode(3342);
+        System.out.println(me2.name);
         // getting the list of students in department and printing it
         SPLinkedList studentsOfCompu = compu.getStudentList();
-        studentsOfCompu.printLinkedList();
+        SPNode me = studentsOfCompu.getNode(3342);
+        me.name = "Men";
+        System.out.println("and here is "+me2.name);
 
         // same thing but using getNode to get the department first
         DNode compu2 = departments.getNode(compu.title);

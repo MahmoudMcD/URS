@@ -30,7 +30,7 @@ public class SPLinkedList implements LinkedList<SPNode> {
         SPNode newNode = new SPNode(sentinal.next, sentinal, name, department, email, id);
 
         if (department != null && withinDepartment == 0)
-            department.addStudent(name, id, email);
+            department.addStudent(newNode);
 
         sentinal.next = newNode;
 
@@ -38,6 +38,22 @@ public class SPLinkedList implements LinkedList<SPNode> {
             sentinal.prev = newNode;
 
         return newNode;
+    }
+
+    // Add it to the list of students
+    public SPNode add(SPNode student, int withinDNode)
+    {
+        student.next = sentinal.next;
+        student.prev = sentinal;
+        sentinal.next = student;
+
+        if (withinDNode == 0)
+            student.department.addStudent(student);
+
+        if (sentinal.prev == sentinal)
+            sentinal.prev = student;
+
+        return student;
     }
 
     // USed for testing

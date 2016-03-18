@@ -53,6 +53,20 @@ public class DNode
         return professors.add(name, id, email, this, 1);
     }
 
+
+    // this is to addStudent/addProf already made in SPLinkedList add
+    public SPNode addStudent(SPNode student)
+    {
+        noOfStudents++;
+        return students.add(student, 1);
+    }
+
+    public SPNode addProf(SPNode prof)
+    {
+        noOfStudents++;
+        return professors.add(prof, 1);
+    }
+
     public SPLinkedList getStudentList()
     {
         return students;

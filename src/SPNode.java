@@ -1,3 +1,5 @@
+import com.sun.org.apache.xpath.internal.operations.String;
+
 /**
  * Created by mcd on 18/03/16.
  * this class is used for SPLinkedList
@@ -10,7 +12,7 @@ public class SPNode {
     public DNode department;
     public String email;
     public int id;
-    // TODO: linked list of courses
+    public CLinkedList courses;
     public SPNode next;
     public SPNode prev;
 
@@ -21,12 +23,12 @@ public class SPNode {
         prev = null;
     }
 
-    // Default Constructor for the sentinal node
+    // Default Constructor for the sentinel node
     public SPNode(SPNode next, SPNode prev)
     {
         this.next = next;
         this.prev = prev;
-        name = null;    email = null;   department = null;
+        name = null;    email = null;   department = null;       courses=null;
         id = 0;
     }
 
@@ -39,5 +41,9 @@ public class SPNode {
         this.name = name;
         this.email = email;
         this.id = id;
+    }
+
+    public void addCourse(CNode course){
+        courses.add(course.name,course.id);
     }
 }

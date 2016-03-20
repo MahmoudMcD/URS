@@ -26,13 +26,22 @@ public class LauncherTest {
         // getting the list of students in department and printing it
         SPLinkedList studentsOfCompu = compu.getStudentList();
         SPNode me = studentsOfCompu.getNode(3342);
-        me.name = "Men";
+       // me.name = "Men";
         System.out.println("and here is "+me2.name);
 
         // same thing but using getNode to get the department first
         DNode compu2 = departments.getNode(compu.title);
         studentsOfCompu = compu2.getStudentList();
         studentsOfCompu.printLinkedList();
+        System.out.println("..............");
+        CLinkedList test = new CLinkedList();
+        test.add("math3",1);
+        test.add("mech2",2);
+        test.add("prog",3);
+        System.out.println(test.getNode(2).name);
+        System.out.println(test.getNode("math3").id);
+        test.remove(3);
+        System.out.println(test.size);
     }
 
 

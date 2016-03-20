@@ -40,7 +40,7 @@ public class LauncherTest {
         test.add("prog",3);
         System.out.println(test.getNode(2).name);
         System.out.println(test.getNode("math3").id);
-        test.remove(3);
+        test.removeNode(3);
         System.out.println(test.size);
     }
 

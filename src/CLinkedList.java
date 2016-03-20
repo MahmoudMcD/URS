@@ -1,7 +1,7 @@
 /**
  * Created by Tarek Alqaddy on 3/20/2016.
  */
-public class CLinkedList {
+public class CLinkedList implements LinkedList<CNode>{
     int size=0;
     CNode sentinel = new CNode();
 
@@ -36,7 +36,7 @@ public class CLinkedList {
         return null;
     }
 
-    public void remove(String name){
+    public void removeNode(String name){
         CNode temp = getNode(name);
         if(temp != null){
             temp.next.priv = temp.priv;
@@ -44,7 +44,7 @@ public class CLinkedList {
             size--;
         }
     }
-    public void remove(int id){
+    public void removeNode(int id){
         CNode temp = getNode(id);
         if(temp != null){
             temp.next.priv = temp.priv;

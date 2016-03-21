@@ -41,16 +41,16 @@ public class CNode {
     public void removeStudent(String name,SPLinkedList allStudentLinkedList){
         SPNode student = allStudentLinkedList.getNode(name);
         if(student != null){
-            allStudentLinkedList.removeNode(student.id);
-            this.students.removeNode(student.id);
+            allStudentLinkedList.removeNode(student.getId());
+            this.students.removeNode(student.getId());
             noOfStudents--;
         }
     }
     public void removeProf(String name,SPLinkedList allProfessorsLinkedList){
         SPNode prof = allProfessorsLinkedList.getNode(name);
         if(prof != null){
-            allProfessorsLinkedList.removeNode(prof.id);
-            this.students.removeNode(prof.id);
+            allProfessorsLinkedList.removeNode(prof.getId());
+            this.students.removeNode(prof.getId());
             noOfStudents--;
         }
     }

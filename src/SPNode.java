@@ -1,4 +1,3 @@
-import com.sun.org.apache.xpath.internal.operations.String;
 
 /**
  * Created by mcd on 18/03/16.
@@ -8,10 +7,10 @@ import com.sun.org.apache.xpath.internal.operations.String;
  */
 public class SPNode {
 
-    public String name;
-    public DNode department;
-    public String email;
-    public int id;
+    private String name;
+    private DNode department;
+    private String email;
+    private int id;
     public CLinkedList courses;
     public SPNode next;
     public SPNode prev;
@@ -23,12 +22,12 @@ public class SPNode {
         prev = null;
     }
 
-    // Default Constructor for the sentinel node
+    // Default Constructor for the sentinal node
     public SPNode(SPNode next, SPNode prev)
     {
         this.next = next;
         this.prev = prev;
-        name = null;    email = null;   department = null;       courses=null;
+        name = null;    email = null;   department = null;
         id = 0;
     }
 
@@ -40,6 +39,41 @@ public class SPNode {
         this.department = department;
         this.name = name;
         this.email = email;
+        this.id = id;
+    }
+
+
+    // Getters
+    public String getName() {
+        return name;
+    }
+
+    public DNode getDepartment() {
+        return department;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    // Setters
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDepartment(DNode department) {
+        this.department = department;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setId(int id) {
         this.id = id;
     }
 

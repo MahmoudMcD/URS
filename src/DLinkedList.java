@@ -26,6 +26,7 @@ public class DLinkedList implements LinkedList<DNode>{
         return newNode;
     }
 
+
     @Override
     public DNode getNode(String title)
     {
@@ -52,12 +53,38 @@ public class DLinkedList implements LinkedList<DNode>{
         return null;
     }
 
+    public DNode[] getNodes()
+    {
+        DNode temp = sentinal.next;
+        DNode[] arrayOfSPNodes = new DNode[10];
+        int size = 0;
+
+        while(temp != sentinal)
+        {
+            if (size == arrayOfSPNodes.length)
+                arrayOfSPNodes = getArray(arrayOfSPNodes);
+
+            arrayOfSPNodes[size] = temp;
+
+            size++;
+            temp = temp.next;
+        }
+
+        return arrayOfSPNodes;
+    }
+
+    /* The Department also should be set to null in SPNode */
+
     @Override
     public void removeNode(int id)
     {
         DNode toBeRemovedNode = getNode(id);
         if (toBeRemovedNode != null)
         {
+            for (SPNode student : toBeRemovedNode.getStudentList().getNodes()) // <<
+            {
+                student.setDepartment(null);
+            }
             toBeRemovedNode.next.prev = toBeRemovedNode.prev;
             toBeRemovedNode.prev.next = toBeRemovedNode.next;
         }
@@ -70,6 +97,10 @@ public class DLinkedList implements LinkedList<DNode>{
         DNode toBeRemovedNode = getNode(title);
         if (toBeRemovedNode != null)
         {
+            for (SPNode student : toBeRemovedNode.getStudentList().getNodes())
+            {
+                student.setDepartment(null);
+            }
             toBeRemovedNode.next.prev = toBeRemovedNode.prev;
             toBeRemovedNode.prev.next = toBeRemovedNode.next;
         }

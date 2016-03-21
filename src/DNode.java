@@ -79,12 +79,12 @@ public class DNode
 
     public void removeStudent(SPNode student)
     {
-        students.removeNode(student.id);
+        students.removeNode(student.getId());
     }
 
     public void removeProf(SPNode prof)
     {
-        professors.removeNode(prof.id);
+        professors.removeNode(prof.getId());
     }
 
 

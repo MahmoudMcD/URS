@@ -48,7 +48,7 @@ public class SPLinkedList implements LinkedList<SPNode> {
         sentinal.next = student;
 
         if (withinDNode == 0)
-            student.department.addStudent(student);
+            student.getDepartment().addStudent(student);
 
         if (sentinal.prev == sentinal)
             sentinal.prev = student;
@@ -62,7 +62,7 @@ public class SPLinkedList implements LinkedList<SPNode> {
         SPNode temp = sentinal.next;
         while (temp != sentinal)
         {
-            System.out.println(temp.name);
+            System.out.println(temp.getName());
             temp = temp.next;
         }
     }
@@ -76,7 +76,7 @@ public class SPLinkedList implements LinkedList<SPNode> {
         SPNode temp = sentinal.next;
         while (temp != sentinal)
         {
-            if (temp.name.equals(name))
+            if (temp.getName().equals(name))
                 return temp;
             temp = temp.next;
         }
@@ -90,7 +90,7 @@ public class SPLinkedList implements LinkedList<SPNode> {
         SPNode temp = sentinal.next;
         while (temp != sentinal)
         {
-            if (temp.id == id)
+            if (temp.getId() == id)
                 return temp;
             temp = temp.next;
         }
@@ -111,7 +111,7 @@ public class SPLinkedList implements LinkedList<SPNode> {
             if (size == arrayOfSPNodes.length)
                 arrayOfSPNodes = getArray(arrayOfSPNodes);
 
-            if ((temp.name).equals(name))
+            if ((temp.getName()).equals(name))
             {
                 arrayOfSPNodes[size] = temp;
                 size++;
@@ -121,6 +121,25 @@ public class SPLinkedList implements LinkedList<SPNode> {
         }
 
         return arrayOfSPNodes;
+    }
+
+    //Returns an array of all Students/Prof in the list
+    public SPNode[] getNodes()
+    {
+        SPNode temp = sentinal.next;
+        SPNode[] array = new SPNode[10];
+        int size = 0;
+
+        while(temp != sentinal)
+        {
+            if (size == array.length)
+                array = getArray(array);
+
+            array[size] = temp;
+            temp = temp.next;
+            size++;
+        }
+        return array;
     }
 
 

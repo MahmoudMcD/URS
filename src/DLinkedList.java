@@ -33,7 +33,7 @@ public class DLinkedList implements LinkedList<DNode>{
         DNode temp = sentinal.next;
         while(temp != sentinal)
         {
-            if ((temp.title).equals(title))
+            if ((temp.getTitle()).equals(title))
                 return temp;
             temp = temp.next;
         }
@@ -46,7 +46,7 @@ public class DLinkedList implements LinkedList<DNode>{
         DNode temp = sentinal.next;
         while(temp != sentinal)
         {
-            if (temp.id == id)
+            if (temp.getId() == id)
                 return temp;
             temp = temp.next;
         }
@@ -68,6 +68,13 @@ public class DLinkedList implements LinkedList<DNode>{
 
             size++;
             temp = temp.next;
+        }
+
+        if (size != arrayOfSPNodes.length)
+        {
+            DNode[] tempArray = new DNode[size];
+            System.arraycopy(arrayOfSPNodes, 0, tempArray, 0, size);
+            arrayOfSPNodes = tempArray;
         }
 
         return arrayOfSPNodes;

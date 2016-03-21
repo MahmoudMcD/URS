@@ -6,8 +6,9 @@
 public class DNode
 {
 
-    public String title;
-    public int id;
+
+    private String title;
+    private int id;
     private int noOfStudents;
     private int noOfProfessors;
     private SPLinkedList students;
@@ -44,13 +45,13 @@ public class DNode
     public SPNode addStudent(String name, int id, String email)
     {
         noOfStudents++;
-        return students.add(name, id, email, this, 1);
+        return students.add(name, id, email, this, 1, 0);
     }
 
     public SPNode addProf(String name, int id, String email)
     {
         noOfProfessors++;
-        return professors.add(name, id, email, this, 1);
+        return professors.add(name, id, email, this, 1, 0);
     }
 
 
@@ -63,7 +64,7 @@ public class DNode
 
     public SPNode addProf(SPNode prof)
     {
-        noOfStudents++;
+        noOfProfessors++;
         return professors.add(prof, 1);
     }
 
@@ -87,5 +88,19 @@ public class DNode
         professors.removeNode(prof.getId());
     }
 
+    public String getTitle() {
+        return title;
+    }
 
+    public int getId() {
+        return id;
+    }
+
+    public int getNoOfStudents() {
+        return noOfStudents;
+    }
+
+    public int getNoOfProfessors() {
+        return noOfProfessors;
+    }
 }

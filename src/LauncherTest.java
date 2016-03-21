@@ -17,8 +17,8 @@ public class LauncherTest {
          * and because we are calling it outside the DNode we pass 0 so the add Method would call addStudent
          * on the DNode instence if the department given
          */
-        students.add("Mahmoud", 3342, "test@yahoo.com", compu, 0);
-        students.add("Magdy", 3341, "Test", compu, 0);
+        students.add("Mahmoud", 3342, "test@yahoo.com", compu, 0, 0);
+        students.add("Magdy", 3341, "Test", compu, 0, 0);
 
         // getting the 3342 from the students linkedlist
         SPNode me2 = students.getNode(3342);
@@ -30,7 +30,7 @@ public class LauncherTest {
         System.out.println("and here is "+me2.getName());
 
         // same thing but using getNode to get the department first
-        DNode compu2 = departments.getNode(compu.title);
+        DNode compu2 = departments.getNode(compu.getTitle());
         studentsOfCompu = compu2.getStudentList();
         studentsOfCompu.printLinkedList();
         System.out.println("..............");

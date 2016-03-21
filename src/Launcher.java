@@ -45,7 +45,7 @@ public class Launcher {
             if (size == names.length)
                 names = getArray(names);
 
-            names[size] = department.title;
+            names[size] = department.getTitle();
             size++;
         }
 

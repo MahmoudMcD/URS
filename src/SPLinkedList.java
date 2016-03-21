@@ -25,12 +25,17 @@ public class SPLinkedList implements LinkedList<SPNode> {
      * if it's equal = 1 this means that we are adding it inside DNode
      * meaning that the addStudent method of the DNode had already added it to the list of students
      */
-    public SPNode add(String name, int id, String email, DNode department, int withinDepartment) // for the student/professor
+    public SPNode add(String name, int id, String email, DNode department, int withinDepartment, int type) // for the student/professor
     {
         SPNode newNode = new SPNode(sentinal.next, sentinal, name, department, email, id);
 
         if (department != null && withinDepartment == 0)
-            department.addStudent(newNode);
+        {
+            if (type == 0)
+                department.addStudent(newNode);
+            else
+                department.addProf(newNode);
+        }
 
         sentinal.next = newNode;
 
@@ -139,6 +144,14 @@ public class SPLinkedList implements LinkedList<SPNode> {
             temp = temp.next;
             size++;
         }
+
+        if (size != array.length)
+        {
+            SPNode[] tempArray = new SPNode[size];
+            System.arraycopy(array, 0, tempArray, 0, size);
+            array = tempArray;
+        }
+
         return array;
     }
 

@@ -21,13 +21,17 @@ public class ApplicationGUI extends Application {
     TreeView<String> tree;
     Launcher app;
     TableView<DNode> departmentTable;
-    TableView<SPNode> insideDepartmentTable;
-    HBox departmentTableTools;
+    TableView<SPNode> insideDepartmentTableStudents, insideDepartmentTableProf;
+    HBox departmentTableTools, insideDepartmentTableStudentTool, insideDepartmentTableProfTool;
     TableColumn<DNode, String> depTitleColumn, depIdColumn, depNoOfStdColumn, depNoOfPrfColumn;
-    TableColumn<SPNode, String> spNameColumn, spEmailColumn, spDepartmentColumn;
-    TableColumn<SPNode, Integer> spIdColumn;
-    TextField depTitleField, depIdField;
-    Button depTableAddButton, depTableDeleteButton;
+    TableColumn<SPNode, String> spNameColumn, spEmailColumn;
+    TableColumn<SPNode, Integer> spIdColumn, profNameColumn, profIdColumn, profEmailColumn;
+    TextField depTitleField, depIdField, studNameField, studEmailField, studIdField;
+    TextField profNameField, profIdField, profEmailField;
+    Button depTableAddButton, depTableDeleteButton, insideDepStudAdd, insideDepProfAdd, insideDepStudDelete;
+    Button insideDepProfDelete;
+    VBox insideDepartmentTableVBox;
+    Label insideDepName;
 
     public static void main(String[] args) {
         launch(args);
@@ -115,7 +119,7 @@ public class ApplicationGUI extends Application {
         departmentTable = new TableView<>();
         departmentTable.setItems(getDepartments());
         departmentTable.getColumns().addAll(depTitleColumn, depIdColumn,depNoOfStdColumn, depNoOfPrfColumn);
-
+        departmentTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         depTitleField = new TextField();
         depTitleField.setPromptText("Department Title");
         depTitleField.setMinWidth(200);
@@ -128,6 +132,7 @@ public class ApplicationGUI extends Application {
         depTableAddButton.setOnAction(e -> addDepartment());
 
         depTableDeleteButton = new Button("Delete");
+        depTableDeleteButton.setOnAction(e-> deleteDepartment());
 
         departmentTableTools = new HBox();
         departmentTableTools.setSpacing(10);
@@ -167,9 +172,24 @@ public class ApplicationGUI extends Application {
     }
 
 
+    public void deleteDepartment()
+    {
+        ObservableList<DNode> departments, selectedDepartments;
+        departments = departmentTable.getItems();
+        selectedDepartments = departmentTable.getSelectionModel().getSelectedItems();
+        selectedDepartments.forEach(departments::remove);
+        for(DNode department: selectedDepartments)
+        {
+            app.getDepartmentList().removeNode(department.getId());
+        }
+    }
+
     public void switchToDepartment(String departmentName)
     {
-        insideDepartmentTable = new TableView<>();
+        insideDepName = new Label(departmentName);
+        insideDepartmentTableStudentTool = new HBox();
+
+        insideDepartmentTableStudents = new TableView<>();
         DNode department = app.getDepartmentList().getNode(departmentName);
         spNameColumn = new TableColumn<>("Student Name");
         spNameColumn.setMinWidth(200);
@@ -183,10 +203,127 @@ public class ApplicationGUI extends Application {
         spEmailColumn.setMinWidth(200);
         spEmailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
 
-        insideDepartmentTable.getItems().addAll(department.getStudentList().getNodes());
-        insideDepartmentTable.getColumns().addAll(spNameColumn, spIdColumn, spEmailColumn);
+        insideDepartmentTableStudents.getItems().addAll(department.getStudentList().getNodes());
+        insideDepartmentTableStudents.getColumns().addAll(spNameColumn, spIdColumn, spEmailColumn);
 
-        layoutMain.setCenter(insideDepartmentTable);
+        studNameField = new TextField();
+        studNameField.setPromptText("Student Name");
+        studEmailField = new TextField();
+        studEmailField.setPromptText("Email");
+        studIdField = new TextField();
+        studIdField.setPromptText("ID");
+
+        insideDepStudAdd = new Button("Add");
+        //TODO: set action
+        insideDepStudAdd.setOnAction(e-> {
+            addStudentToDepartment();
+        });
+
+        insideDepStudDelete = new Button("Delete");
+        //TODO: set delete
+
+
+        // Professors table
+        insideDepartmentTableProf = new TableView<>();
+        profNameColumn = new TableColumn<>("Professor Name");
+        profNameColumn.setMinWidth(200);
+        profNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+
+        profEmailColumn = new TableColumn<>("Email");
+        profEmailColumn.setMinWidth(200);
+        profEmailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
+
+        profIdColumn = new TableColumn<>("ID");
+        profIdColumn.setMinWidth(50);
+        profIdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+
+        insideDepartmentTableProf.getItems().addAll(department.getProfList().getNodes());
+        insideDepartmentTableProf.getColumns().addAll(profNameColumn, profIdColumn, profEmailColumn);
+        // End of professors table
+
+        //Students tool
+        insideDepartmentTableStudentTool.getChildren().addAll(studNameField, studEmailField, studIdField, insideDepStudAdd
+                                        ,insideDepStudDelete);
+        insideDepartmentTableStudentTool.setSpacing(10);
+        insideDepartmentTableStudentTool.setPadding(new Insets(10, 10, 10, 10));
+
+
+        //End of students tool
+
+        //Prof tool
+        insideDepartmentTableProfTool = new HBox();
+
+        profNameField = new TextField();
+        profNameField.setPromptText("Professors Name");
+        profNameField.setMinWidth(200);
+
+        profEmailField = new TextField();
+        profEmailField.setMinWidth(200);
+        profEmailField.setPromptText("Email");
+
+        profIdField = new TextField();
+        profIdField.setMinWidth(50);
+        profIdField.setPromptText("Id");
+
+        insideDepProfAdd = new Button("Add");
+        insideDepProfAdd.setOnAction(e -> addProfToDepartment());
+        //TODO: add action
+        insideDepProfDelete = new Button("Delete");
+        insideDepProfDelete.setOnAction(e -> deleteProfFromDepartment());
+        //TODO
+
+        insideDepartmentTableProfTool.getChildren().addAll(profNameField,profEmailField, profIdField ,
+                insideDepProfAdd, insideDepProfDelete);
+        insideDepartmentTableProfTool.setSpacing(10);
+        insideDepartmentTableProfTool.setPadding(new Insets(10, 10, 10, 10));
+
+        //End of prof tool
+
+
+
+        insideDepartmentTableVBox = new VBox();
+        insideDepartmentTableVBox.getChildren().addAll(insideDepartmentTableStudents, insideDepartmentTableStudentTool,
+                insideDepartmentTableProf, insideDepartmentTableProfTool);
+        layoutMain.setCenter(insideDepartmentTableVBox);
 
     }
+
+    public void addStudentToDepartment()
+    {
+        String name = studNameField.getText();
+        String email = studEmailField.getText();
+        int id = Integer.parseInt(studIdField.getText());
+        DNode department = app.getDepartmentList().getNode(insideDepName.getText());
+        SPNode student = app.getStudentsList().add(name, id, email, department, 0, 0);
+        insideDepartmentTableStudents.getItems().add(student);
+        studNameField.clear();
+        studEmailField.clear();
+        studIdField.clear();
+    }
+
+    public void addProfToDepartment()
+    {
+        String name = profNameField.getText();
+        String email = profEmailField.getText();
+        int id = Integer.parseInt(profIdField.getText());
+        DNode department = app.getDepartmentList().getNode(insideDepName.getText());
+        SPNode professor = app.getStudentsList().add(name, id, email, department, 0, 1);
+        insideDepartmentTableProf.getItems().add(professor);
+        profNameField.clear();
+        profEmailField.clear();
+        profIdField.clear();
+    }
+
+    public void deleteProfFromDepartment()
+    {
+        ObservableList<SPNode> selectedProf, allprof;
+        allprof = insideDepartmentTableProf.getItems();
+        selectedProf = insideDepartmentTableProf.getSelectionModel().getSelectedItems();
+        selectedProf.forEach(allprof::remove);
+        for(SPNode prof: allprof)
+        {
+            app.getProfList().removeNode(prof.getId());
+        }
+    }
+
 }

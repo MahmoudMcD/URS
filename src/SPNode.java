@@ -1,55 +1,34 @@
-
-/**
- * Created by mcd on 18/03/16.
- * this class is used for SPLinkedList
- * each contain info of a certain student
- * not used intividualy
- */
-public class SPNode {
-
+public class SPNode
+{
     private String name;
-    private DNode department;
     private String email;
     private int id;
-    public CLinkedList courses;
+    private DNode department;
+    private CLinkedList courses;
     public SPNode next;
     public SPNode prev;
 
-    // Default Constructor
     public SPNode()
     {
-        next = null;
+        email = null;   id = 0;
+        name = null;    department = null;
         prev = null;
+        next = null;
+        courses = null;
     }
 
-    // Default Constructor for the sentinal node
-    public SPNode(SPNode next, SPNode prev)
-    {
-        this.next = next;
-        this.prev = prev;
-        name = null;    email = null;   department = null;
-        id = 0;
-    }
-
-    // Used Constructor for add method
-    public SPNode(SPNode next, SPNode prev, String name, DNode department, String email, int id)
-    {
-        this.next = next;
-        this.prev = prev;
-        this.department = department;
-        this.name = name;
+    public SPNode(String email, String name, int id, DNode department, SPNode next, SPNode prev) {
         this.email = email;
+        this.name = name;
         this.id = id;
+        this.department = department;
+        this.next = next;
+        this.prev = prev;
+        courses = new CLinkedList();
     }
 
-
-    // Getters
     public String getName() {
         return name;
-    }
-
-    public DNode getDepartment() {
-        return department;
     }
 
     public String getEmail() {
@@ -60,17 +39,20 @@ public class SPNode {
         return id;
     }
 
-    // Setters
+    public DNode getDepartment() {
+        return department;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setDepartment(DNode department) {
-        this.department = department;
-    }
-
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void setDepartment(DNode department) {
+        this.department = department;
     }
 
     public void setId(int id) {
@@ -79,5 +61,11 @@ public class SPNode {
 
     public void addCourse(CNode course){
         courses.add(course.name,course.id);
+    }
+
+    public static SPNode returnCopy(SPNode spNode)
+    {
+        SPNode newNode = new SPNode(spNode.getEmail(), spNode.getName(), spNode.getId(),spNode.getDepartment(),null, null);
+        return newNode;
     }
 }

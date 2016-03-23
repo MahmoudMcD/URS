@@ -27,20 +27,18 @@ public class SPLinkedList implements LinkedList<SPNode> {
      */
     public SPNode add(String name, int id, String email, DNode department, int withinDepartment, int type) // for the student/professor
     {
-        SPNode newNode = new SPNode(sentinal.next, sentinal, name, department, email, id);
-
-        if (department != null && withinDepartment == 0)
-        {
-            if (type == 0)
-                department.addStudent(newNode);
-            else
-                department.addProf(newNode);
-        }
-
+        SPNode newNode = new SPNode(email, name, id, department, sentinal.next, sentinal);
+        SPNode temp = sentinal.next;
         sentinal.next = newNode;
+        temp.prev = newNode;
 
-        if (sentinal.prev == sentinal)
-            sentinal.prev = newNode;
+        if (withinDepartment == 0)
+        {
+            if (type == 1)
+                department.addProf(newNode);
+            else
+                department.addStudent(newNode);
+        }
 
         return newNode;
     }
@@ -50,14 +48,9 @@ public class SPLinkedList implements LinkedList<SPNode> {
     {
         student.next = sentinal.next;
         student.prev = sentinal;
+        SPNode temp = sentinal.next;
         sentinal.next = student;
-
-        if (withinDNode == 0)
-            student.getDepartment().addStudent(student);
-
-        if (sentinal.prev == sentinal)
-            sentinal.prev = student;
-
+        temp.prev = student;
         return student;
     }
 
@@ -161,12 +154,12 @@ public class SPLinkedList implements LinkedList<SPNode> {
      */
     public void removeNode(int id)
     {
-        SPNode toBeRemovedNode = getNode(id);
-        if (toBeRemovedNode != null)
-        {
-            toBeRemovedNode.next.prev = toBeRemovedNode.prev;
-            toBeRemovedNode.prev.next = toBeRemovedNode.next;
-        }
+        SPNode toBeRemoved = getNode(id);
+        toBeRemoved.next.prev = toBeRemoved.prev;
+        toBeRemoved.prev.next = toBeRemoved.next;
+        toBeRemoved.next = null;
+        toBeRemoved.prev = null;
     }
+
 
 }

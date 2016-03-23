@@ -59,13 +59,15 @@ public class DNode
     public SPNode addStudent(SPNode student)
     {
         noOfStudents++;
-        return students.add(student, 1);
+        SPNode copyOfStudent = SPNode.returnCopy(student);
+        return students.add(copyOfStudent, 1);
     }
 
     public SPNode addProf(SPNode prof)
     {
         noOfProfessors++;
-        return professors.add(prof, 1);
+        SPNode copyOfProf = SPNode.returnCopy(prof);
+        return professors.add(copyOfProf, 1);
     }
 
     public SPLinkedList getStudentList()
@@ -78,10 +80,18 @@ public class DNode
         return professors;
     }
 
+    /* to be deleted TODO */
     public void removeStudent(SPNode student)
     {
         students.removeNode(student.getId());
     }
+
+    public void removeStudent(int id)
+    {
+        students.removeNode(id);
+    }
+
+
 
     public void removeProf(SPNode prof)
     {

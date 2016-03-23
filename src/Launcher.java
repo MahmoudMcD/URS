@@ -16,6 +16,7 @@ public class Launcher {
         departmentList = new DLinkedList();
         Seeder.seed(studentsList, profList, departmentList, /*Change it to courses*/ null);
         //TODO;
+        studentsList.printLinkedList();
     }
 
     public String[] getNamesInArray(SPLinkedList linkedList)
@@ -90,7 +91,6 @@ public class Launcher {
         System.arraycopy(prevArray, 0, newArray, 0, prevArray.length);
         return newArray;
     }
-
 
 
 }

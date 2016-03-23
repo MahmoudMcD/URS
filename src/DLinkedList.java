@@ -18,10 +18,10 @@ public class DLinkedList implements LinkedList<DNode>{
     public DNode add(String title, int id)
     {
         DNode newNode = new DNode(title, id, sentinal.next, sentinal);
-        if (sentinal.prev == sentinal)
-            sentinal.prev = newNode;
 
+        DNode temp = sentinal.next;
         sentinal.next = newNode;
+        temp.prev = newNode;
 
         return newNode;
     }
@@ -110,6 +110,17 @@ public class DLinkedList implements LinkedList<DNode>{
             }
             toBeRemovedNode.next.prev = toBeRemovedNode.prev;
             toBeRemovedNode.prev.next = toBeRemovedNode.next;
+        }
+    }
+
+    // USed for testing
+    public void printLinkedList()
+    {
+        DNode temp = sentinal.next;
+        while (temp != sentinal)
+        {
+            System.out.println(temp.getTitle());
+            temp = temp.next;
         }
     }
 

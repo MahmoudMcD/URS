@@ -48,27 +48,17 @@ public class ApplicationGUI extends Application {
         root = new TreeItem<>();
         root.setExpanded(true);
 
-        // Making the department branch and leafs
         departments = makeBranch("Departments", root);
-        String[] departmentsNames = app.getNamesInArray(app.getDepartmentList());
-        for (String department: departmentsNames)
-        {
-            makeBranch(department, departments);
-        }
-
-        // Making the students branch
         students = makeBranch("Students", root);
-        // Making the professors branch
         professors = makeBranch("Professors", root);
+        courses = makeBranch("Courses", root);
 
-        // Setting up the tree view
+        makeBranches(app.getNamesInArray(app.getDepartmentList()), departments);
+
         tree = new TreeView<>(root);
         tree.setShowRoot(false);
         tree.getSelectionModel().selectedItemProperty()
-                .addListener((v, oldValue, newValue) -> {
-                    switchTable(newValue.getValue());
-                });
-
+                .addListener((v, oldValue, newValue) -> switchTable(newValue.getValue()));
 
         // Setting up the table view for departments
         setDepartmentTable();
@@ -83,6 +73,7 @@ public class ApplicationGUI extends Application {
         window.show();
     }
 
+    // Functions associated with the tree view
     public TreeItem<String> makeBranch(String title, TreeItem<String> parent)
     {
         TreeItem<String> newItem = new TreeItem<>(title);
@@ -90,6 +81,15 @@ public class ApplicationGUI extends Application {
         parent.getChildren().add(newItem);
         return newItem;
     }
+
+    public void makeBranches(String[] titles, TreeItem<String> parent)
+    {
+        for(String title: titles)
+        {
+            makeBranch(title, parent);
+        }
+    }
+    // End of the tree view functions
 
     public ObservableList<DNode> getDepartments()
     {
@@ -100,44 +100,33 @@ public class ApplicationGUI extends Application {
 
     public void setDepartmentTable()
     {
-        depTitleColumn = new TableColumn<>("Title");
-        depTitleColumn.setMinWidth(200);
-        depTitleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
-
         depIdColumn = new TableColumn<>("ID");
-        depIdColumn.setMinWidth(50);
         depIdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        depIdColumn.setMinWidth(50);
 
-        depNoOfStdColumn = new TableColumn<>("Students Count");
-        depNoOfStdColumn.setMinWidth(70);
-        depNoOfStdColumn.setCellValueFactory(new PropertyValueFactory<>("noOfStudents"));
+        depTitleColumn = new TableColumn<>("Title");
+        depTitleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
+        depTitleColumn.setMinWidth(200);
 
         depNoOfPrfColumn = new TableColumn<>("Professors Count");
-        depNoOfPrfColumn.setMinWidth(70);
         depNoOfPrfColumn.setCellValueFactory(new PropertyValueFactory<>("noOfProfessors"));
+        depNoOfPrfColumn.setMinWidth(50);
 
-        departmentTable = new TableView<>();
-        departmentTable.setItems(getDepartments());
-        departmentTable.getColumns().addAll(depTitleColumn, depIdColumn,depNoOfStdColumn, depNoOfPrfColumn);
-        departmentTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        depNoOfStdColumn = new TableColumn<>("Students Count");
+        depNoOfStdColumn.setCellValueFactory(new PropertyValueFactory<>("noOfStudents"));
+        depNoOfStdColumn.setMinWidth(50);
+
+        departmentTable.getItems().addAll(app.getDepartmentList().getNodes());
+        departmentTable.getColumns().addAll(depIdColumn, depTitleColumn, depNoOfPrfColumn, depNoOfStdColumn);
+
+        departmentTableTools = new HBox();
         depTitleField = new TextField();
         depTitleField.setPromptText("Department Title");
         depTitleField.setMinWidth(200);
 
         depIdField = new TextField();
-        depIdField.setPromptText("Department Id");
-        depIdField.setMinWidth(100);
-
-        depTableAddButton = new Button("Add");
-        depTableAddButton.setOnAction(e -> addDepartment());
-
-        depTableDeleteButton = new Button("Delete");
-        depTableDeleteButton.setOnAction(e-> deleteDepartment());
-
-        departmentTableTools = new HBox();
-        departmentTableTools.setSpacing(10);
-        departmentTableTools.setPadding(new Insets(10, 10, 10, 10));
-        departmentTableTools.getChildren().addAll(depTitleField, depIdField, depTableAddButton, depTableDeleteButton);
+        depIdField.setMinWidth(50);
+        depIdField.setPromptText("ID");
 
     }
 
@@ -167,6 +156,10 @@ public class ApplicationGUI extends Application {
         int id = Integer.parseInt(depIdField.getText());
         DNode newDepartment = app.getDepartmentList().add(title, id);
         departmentTable.getItems().add(newDepartment);
+        for(DNode department: app.getDepartmentList().getNodes())
+        {
+            System.out.println(department.getTitle());
+        }
         depTitleField.clear();
         depIdField.clear();
     }
@@ -180,8 +173,10 @@ public class ApplicationGUI extends Application {
         selectedDepartments.forEach(departments::remove);
         for(DNode department: selectedDepartments)
         {
+            System.out.println(department.getTitle());
             app.getDepartmentList().removeNode(department.getId());
         }
+        System.out.println(app.getDepartmentList());
     }
 
     public void switchToDepartment(String departmentName)
@@ -294,7 +289,7 @@ public class ApplicationGUI extends Application {
         String email = studEmailField.getText();
         int id = Integer.parseInt(studIdField.getText());
         DNode department = app.getDepartmentList().getNode(insideDepName.getText());
-        SPNode student = app.getStudentsList().add(name, id, email, department, 0, 0);
+         SPNode student = app.getStudentsList().add(name, id, email, department, 0, 0);
         insideDepartmentTableStudents.getItems().add(student);
         studNameField.clear();
         studEmailField.clear();
@@ -322,8 +317,10 @@ public class ApplicationGUI extends Application {
         selectedProf.forEach(allprof::remove);
         for(SPNode prof: allprof)
         {
+            System.out.println(prof.getName());
             app.getProfList().removeNode(prof.getId());
         }
+        app.getProfList().printLinkedList();
     }
 
 }

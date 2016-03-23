@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="53076dd6-f720-4ad7-a13a-6a996864fc27" name="Default" comment="add courses and delet added to GUI">
+    <list default="true" id="53076dd6-f720-4ad7-a13a-6a996864fc27" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/URS/ApplicationGUI.class" afterPath="$PROJECT_DIR$/out/production/URS/ApplicationGUI.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/URS/CLinkedList.class" afterPath="$PROJECT_DIR$/out/production/URS/CLinkedList.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/URS/CNode.class" afterPath="$PROJECT_DIR$/out/production/URS/CNode.class" />
@@ -9,12 +9,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/URS/SPNode.class" afterPath="$PROJECT_DIR$/out/production/URS/SPNode.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/URS/Seeder.class" afterPath="$PROJECT_DIR$/out/production/URS/Seeder.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ApplicationGUI.java" afterPath="$PROJECT_DIR$/src/ApplicationGUI.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CLinkedList.java" afterPath="$PROJECT_DIR$/src/CLinkedList.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CNode.java" afterPath="$PROJECT_DIR$/src/CNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Launcher.java" afterPath="$PROJECT_DIR$/src/Launcher.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SPLinkedList.java" afterPath="$PROJECT_DIR$/src/SPLinkedList.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Seeder.java" afterPath="$PROJECT_DIR$/src/Seeder.java" />
     </list>
     <ignored path="URS.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -543,7 +537,7 @@
       <workItem from="1458433370728" duration="54000" />
       <workItem from="1458735880478" duration="741000" />
       <workItem from="1458737824939" duration="5847000" />
-      <workItem from="1458758905935" duration="2105000" />
+      <workItem from="1458758905935" duration="2138000" />
     </task>
     <task id="LOCAL-00001" summary="courses node&amp;linked list&amp; added to student">
       <created>1458433019518</created>
@@ -557,11 +551,17 @@
       <option name="project" value="LOCAL" />
       <updated>1458760501993</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add courses and delet added to GUI">
+      <created>1458761275952</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1458761275952</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21989000" />
+    <option name="totallyTimeSpent" value="22022000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">

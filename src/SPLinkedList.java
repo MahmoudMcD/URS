@@ -32,7 +32,7 @@ public class SPLinkedList implements LinkedList<SPNode> {
         sentinal.next = newNode;
         temp.prev = newNode;
 
-        if (withinDepartment == 0)
+        if (withinDepartment == 0   )
         {
             if (type == 1)
                 department.addProf(newNode);

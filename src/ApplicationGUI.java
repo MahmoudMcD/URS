@@ -1,3 +1,4 @@
+
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,6 +23,16 @@ public class ApplicationGUI extends Application {
     Launcher app;
     TableView<DNode> departmentTable;
     TableView<SPNode> insideDepartmentTableStudents, insideDepartmentTableProf;
+    
+    // courses here
+    TableView<CNode> coursesTable;
+    TableColumn<CNode,String> courseTitleCol;
+    TableColumn<CNode,Integer> courseIdCol,courseNoOfStudentsCol,courseNoOfProfessorsCol;
+    HBox coursesTableTools;
+    TextField coursesNameTextField,coursesIdTextField;
+    Button coursesAdd,coursesDelete;
+    // end
+    
     HBox departmentTableTools, insideDepartmentTableStudentTool, insideDepartmentTableProfTool;
     TableColumn<DNode, String> depTitleColumn, depIdColumn, depNoOfStdColumn, depNoOfPrfColumn;
     TableColumn<SPNode, String> spNameColumn, spEmailColumn;
@@ -63,6 +74,8 @@ public class ApplicationGUI extends Application {
         // Setting up the table view for departments
         setDepartmentTable();
         //End of the department table
+        //for courses
+        setCoursesTable();
 
 
         layoutMain = new BorderPane();
@@ -97,9 +110,54 @@ public class ApplicationGUI extends Application {
         departments.addAll(app.getDepartmentList().getNodes());
         return departments;
     }
+    public ObservableList<CNode> getCourses(){
+        ObservableList<CNode> courses = FXCollections.observableArrayList();
+        courses.addAll(app.getCourseList().getNodes());
+        return  courses;
+    }
+    public void setCoursesTable(){
+        courseTitleCol = new TableColumn<>("Title");
+        courseTitleCol.setMinWidth(200);
+        courseTitleCol.setCellValueFactory(new PropertyValueFactory<>("name"));
 
+        courseIdCol = new TableColumn<>("ID");
+        courseIdCol.setMinWidth(70);
+        courseIdCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+
+        courseNoOfProfessorsCol = new TableColumn<>("#Professors");
+        courseNoOfProfessorsCol.setMinWidth(100);
+        courseNoOfProfessorsCol.setCellValueFactory(new PropertyValueFactory<>("noOfProfessors"));
+
+        courseNoOfStudentsCol = new TableColumn<>("#Students");
+        courseNoOfStudentsCol.setMinWidth(200);
+        courseNoOfStudentsCol.setCellValueFactory(new PropertyValueFactory<>("noOfStudents"));
+
+        coursesTable = new TableView<>();
+        coursesTable.setItems(getCourses());
+        coursesTable.getColumns().addAll(courseTitleCol,courseIdCol,courseNoOfProfessorsCol,courseNoOfStudentsCol);
+
+        coursesAdd = new Button("add");
+        coursesDelete = new Button("Delete");
+        coursesNameTextField = new TextField();
+        coursesIdTextField = new TextField();
+
+        coursesNameTextField.setPromptText("Course Name");
+        coursesIdTextField.setPromptText("Course ID");
+
+        coursesNameTextField.setMinWidth(200);
+        coursesIdTextField.setMinWidth(100);
+
+        coursesTableTools= new HBox(10);
+        coursesTableTools.setPadding(new Insets(10, 10, 10, 10));
+        coursesTableTools.getChildren().addAll(coursesNameTextField,coursesIdTextField,coursesAdd,coursesDelete);
+
+        coursesAdd.setOnAction(e -> addCourse());
+        coursesDelete.setOnAction(e -> removeCourse());
+
+    }
     public void setDepartmentTable()
     {
+        departmentTable = new TableView<>();
         depIdColumn = new TableColumn<>("ID");
         depIdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         depIdColumn.setMinWidth(50);
@@ -135,6 +193,10 @@ public class ApplicationGUI extends Application {
         if (tableName.equals("Departments")) {
             layoutMain.setCenter(departmentTable);
             layoutMain.setBottom(departmentTableTools);
+        }
+        else if(tableName.equals("Courses")) {
+            layoutMain.setCenter(coursesTable);
+            layoutMain.setBottom(coursesTableTools);
         }
         else
         {
@@ -178,7 +240,33 @@ public class ApplicationGUI extends Application {
         }
         System.out.println(app.getDepartmentList());
     }
+    
+    public void addCourse(){
+        String name = coursesNameTextField.getText();
+        int id= Integer.parseInt(coursesIdTextField.getText());
+        coursesTable.getItems().add(app.getCourseList().add(name,id));
+        coursesNameTextField.clear();
+        coursesIdTextField.clear();
+    }
 
+    public void removeCourse(){
+        String name = coursesNameTextField.getText();
+        int id = Integer.parseInt(coursesIdTextField.getText());
+        System.out.println(app.getStudentsList().getNode("Foo").getCourses().size);
+        if(app.getCourseList().getNode(id) == null)
+            return;
+        CNode course = app.getCourseList().getNode(name);
+        String[] studentsInThisCourse = app.getNamesOfStudentsInCourseInArray(course);
+        String[] professorsInThisCourse = app.getNamesOfProfessorsInCourseInArray(course);
+        app.removeCourseFromStudents(course,studentsInThisCourse,app.getStudentsList());
+        app.removeCourseFromProfessors(course,professorsInThisCourse,app.getProfList());
+        app.getCourseList().removeNode(name);
+        coursesTable.getItems().remove(course);
+        coursesNameTextField.clear();
+        coursesIdTextField.clear();
+        System.out.println(app.getStudentsList().getNode("Foo").getCourses().size);
+
+    }
     public void switchToDepartment(String departmentName)
     {
         insideDepName = new Label(departmentName);

@@ -6,11 +6,11 @@ public class CNode {
     public String name;
     public int id;
     private int noOfStudents=0,noOfProfessors=0;
-    DLinkedList departmens;
-    SPLinkedList students;
-    SPLinkedList professors;
-    CNode priv;
+    public DLinkedList departmens;
+    public SPLinkedList students;
+    public SPLinkedList professors;
     CNode next;
+    CNode priv;
 
     public CNode(){
         next = null;
@@ -54,4 +54,36 @@ public class CNode {
             noOfStudents--;
         }
     }
+    public String getName(){return this.name;}
+
+    public void setName(String name) {this.name = name;}
+    public int getId() {return id;}
+
+    public void setId(int id) {this.id = id;}
+
+    public int getNoOfStudents() {return noOfStudents;}
+
+    public void setNoOfStudents(int noOfStudents) {this.noOfStudents = noOfStudents;}
+
+    public int getNoOfProfessors() {return noOfProfessors;}
+
+    public void setNoOfProfessors(int noOfProfessors) {this.noOfProfessors = noOfProfessors;}
+
+    public DLinkedList getDepartmens() {return departmens;}
+
+    public void setDepartmens(DLinkedList departmens) {this.departmens = departmens;}
+
+    public SPLinkedList getStudents() {return students;}
+
+    public void setStudents(SPLinkedList students) {this.students = students;}
+
+    public SPLinkedList getProfessors() {return professors;}
+
+    public void setProfessors(SPLinkedList professors) {this.professors = professors;}
+
+    public static CNode returnCopy(CNode course){
+        CNode temp = new CNode(course.name,course.id,null,null);
+        return temp;
+    }
+
 }

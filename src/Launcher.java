@@ -1,3 +1,5 @@
+
+
 /**
  * Created by mcd on 20/03/16.
  * this class is to mange all other classes and handle orders from GUI
@@ -7,16 +9,16 @@ public class Launcher {
     private SPLinkedList studentsList;
     private SPLinkedList profList;
     private DLinkedList departmentList;
-    //private CLinkedList courseList; //TODO
+    private CLinkedList courseList;
 
     public Launcher()
     {
         studentsList = new SPLinkedList();
         profList = new SPLinkedList();
         departmentList = new DLinkedList();
-        Seeder.seed(studentsList, profList, departmentList, /*Change it to courses*/ null);
-        //TODO;
-        studentsList.printLinkedList();
+        courseList = new CLinkedList();
+        Seeder.seed(studentsList, profList, departmentList,courseList);
+        //studentsList.printLinkedList();
     }
 
     public String[] getNamesInArray(SPLinkedList linkedList)
@@ -60,6 +62,36 @@ public class Launcher {
         return names;
     }
 
+    public String[] getNamesOfStudentsInCourseInArray (CNode course){
+        String[] students = new String[10];
+        int i;
+        if(course.getNoOfStudents()!=0)
+            students = getNamesInArray(course.getStudents());
+        return students;
+    }
+    public String[] getNamesOfProfessorsInCourseInArray (CNode course){
+        String[] professors = new String[10];
+        int i;
+        if(course.getNoOfProfessors()!=0)
+            professors = getNamesInArray(course.getStudents());
+        return professors;
+    }
+    public void removeCourseFromStudents(CNode course, String[] students,SPLinkedList allStudents){
+        int i;
+        for(i=0;i<students.length;i++){
+            if(students[i]== null)
+                continue;
+            allStudents.getNode(students[i]).removeCourse(course);
+        }
+    }
+    public void removeCourseFromProfessors(CNode course, String[] professors,SPLinkedList allProfessors){
+        int i;
+        for(i=0;i<professors.length;i++){
+            if(professors[i]==null)
+                continue;
+            allProfessors.getNode(professors[i]).removeCourse(course);
+        }
+    }
     public SPLinkedList getStudentsList() {
         return studentsList;
     }
@@ -72,6 +104,10 @@ public class Launcher {
         return profList;
     }
 
+    public CLinkedList getCourseList() {
+        return courseList;
+    }
+
     public void setStudentsList(SPLinkedList studentsList) {
         this.studentsList = studentsList;
     }
@@ -82,6 +118,10 @@ public class Launcher {
 
     public void setDepartmentList(DLinkedList departmentList) {
         this.departmentList = departmentList;
+    }
+
+    public void setCourseList(CLinkedList courseList) {
+        this.courseList = courseList;
     }
 
     private String[] getArray(String[] prevArray)

@@ -59,10 +59,22 @@ public class SPNode
         this.id = id;
     }
 
-    public void addCourse(CNode course){
-        courses.add(course.name,course.id);
+    public CLinkedList getCourses() {
+        return courses;
     }
 
+    public void setCourses(CLinkedList courses) {
+        this.courses = courses;
+    }
+
+    public void addCourse(CNode course){
+        CNode courseCopy = CNode.returnCopy(course);
+        courses.add(courseCopy.name,courseCopy.id);
+    }
+    public void removeCourse(CNode course){
+        CNode courseCopy = CNode.returnCopy(course);
+        courses.removeNode(courseCopy.name);
+    }
     public static SPNode returnCopy(SPNode spNode)
     {
         SPNode newNode = new SPNode(spNode.getEmail(), spNode.getName(), spNode.getId(),spNode.getDepartment(),null, null);

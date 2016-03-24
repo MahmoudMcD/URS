@@ -5,7 +5,7 @@
 public class CNode {
     public String name;
     public int id;
-    private int noOfStudents=0,noOfProfessors=0;
+    public int noOfStudents=0,noOfProfessors=0;
     public DLinkedList departmens;
     public SPLinkedList students;
     public SPLinkedList professors;
@@ -29,19 +29,21 @@ public class CNode {
     public void addStudent(String name,SPLinkedList allStudentLinkedList){
         noOfStudents++;
         SPNode student = allStudentLinkedList.getNode(name);
-        students.add(student,0);
-        student.addCourse(this);
+        SPNode newStudent = SPNode.returnCopy(student);
+        students.add(newStudent,0);
+        student.addCourse(this,null,1,1);
     }
     public void addProfessor(String name,SPLinkedList allProfessorsLinkedList){
         noOfProfessors++;
         SPNode prof = allProfessorsLinkedList.getNode(name);
-        students.add(prof,0);
-        prof.addCourse(this);
+        SPNode newProf= SPNode.returnCopy(prof);
+        professors.add(newProf,0);
+        prof.addCourse(this,null,0,1);
     }
     public void removeStudent(String name,SPLinkedList allStudentLinkedList){
         SPNode student = allStudentLinkedList.getNode(name);
         if(student != null){
-            allStudentLinkedList.removeNode(student.getId());
+            student.removeCourse(this,null,1,1);
             this.students.removeNode(student.getId());
             noOfStudents--;
         }
@@ -49,9 +51,9 @@ public class CNode {
     public void removeProf(String name,SPLinkedList allProfessorsLinkedList){
         SPNode prof = allProfessorsLinkedList.getNode(name);
         if(prof != null){
-            allProfessorsLinkedList.removeNode(prof.getId());
+            prof.removeCourse(this,null,0,1);
             this.students.removeNode(prof.getId());
-            noOfStudents--;
+            noOfProfessors--;
         }
     }
     public String getName(){return this.name;}

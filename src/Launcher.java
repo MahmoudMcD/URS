@@ -76,20 +76,20 @@ public class Launcher {
             professors = getNamesInArray(course.getStudents());
         return professors;
     }
-    public void removeCourseFromStudents(CNode course, String[] students,SPLinkedList allStudents){
+    public void removeCourseFromStudents(CNode course, String[] students,SPLinkedList allStudents,CLinkedList allCourses){
         int i;
         for(i=0;i<students.length;i++){
             if(students[i]== null)
                 continue;
-            allStudents.getNode(students[i]).removeCourse(course);
+            allStudents.getNode(students[i]).removeCourse(course,allCourses,1,1);
         }
     }
-    public void removeCourseFromProfessors(CNode course, String[] professors,SPLinkedList allProfessors){
+    public void removeCourseFromProfessors(CNode course, String[] professors,SPLinkedList allProfessors,CLinkedList allCourses){
         int i;
         for(i=0;i<professors.length;i++){
             if(professors[i]==null)
                 continue;
-            allProfessors.getNode(professors[i]).removeCourse(course);
+            allProfessors.getNode(professors[i]).removeCourse(course,allCourses,0,1);
         }
     }
     public SPLinkedList getStudentsList() {

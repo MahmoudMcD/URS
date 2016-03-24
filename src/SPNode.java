@@ -67,13 +67,41 @@ public class SPNode
         this.courses = courses;
     }
 
-    public void addCourse(CNode course){
+    public void addCourse(CNode course,CLinkedList allCourses,int profOrStudent,int withinCourses){
         CNode courseCopy = CNode.returnCopy(course);
         courses.add(courseCopy.name,courseCopy.id);
+        if(withinCourses ==0) {
+            switch (profOrStudent) {
+                case 0:
+                    allCourses.getNode(courseCopy.getId()).getProfessors().add(SPNode.returnCopy(this), 0);
+                    int k = allCourses.getNode(courseCopy.getId()).getNoOfProfessors();
+                    allCourses.getNode(courseCopy.getId()).setNoOfProfessors(k + 1);
+                    break;
+                case 1:
+                    allCourses.getNode(courseCopy.getId()).getStudents().add(SPNode.returnCopy(this), 0);
+                    int j = allCourses.getNode(courseCopy.getId()).getNoOfStudents();
+                    allCourses.getNode(courseCopy.getId()).setNoOfStudents(j + 1);
+                    break;
+            }
+        }
+
     }
-    public void removeCourse(CNode course){
+    public void removeCourse(CNode course,CLinkedList allCourses,int profOrStudent, int withinCourses){
         CNode courseCopy = CNode.returnCopy(course);
         courses.removeNode(courseCopy.name);
+        if(withinCourses == 0) {
+            switch (profOrStudent) {
+                case 0:
+                    allCourses.getNode(courseCopy.getId()).getProfessors().removeNode(this.getId());
+                    int k = allCourses.getNode(courseCopy.getId()).getNoOfProfessors();
+                    allCourses.getNode(courseCopy.getId()).setNoOfProfessors(k - 1);
+                    break;
+                case 1:
+                    allCourses.getNode(courseCopy.getId()).getStudents().removeNode(this.id);
+                    int j = allCourses.getNode(courseCopy.getId()).getNoOfStudents();
+                    allCourses.getNode(courseCopy.getId()).setNoOfStudents(j - 1);
+            }
+        }
     }
     public static SPNode returnCopy(SPNode spNode)
     {

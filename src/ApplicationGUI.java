@@ -258,14 +258,13 @@ public class ApplicationGUI extends Application {
         CNode course = app.getCourseList().getNode(name);
         String[] studentsInThisCourse = app.getNamesOfStudentsInCourseInArray(course);
         String[] professorsInThisCourse = app.getNamesOfProfessorsInCourseInArray(course);
-        app.removeCourseFromStudents(course,studentsInThisCourse,app.getStudentsList());
-        app.removeCourseFromProfessors(course,professorsInThisCourse,app.getProfList());
+        app.removeCourseFromStudents(course,studentsInThisCourse,app.getStudentsList(),app.getCourseList());
+        app.removeCourseFromProfessors(course,professorsInThisCourse,app.getProfList(),app.getCourseList());
         app.getCourseList().removeNode(name);
         coursesTable.getItems().remove(course);
         coursesNameTextField.clear();
         coursesIdTextField.clear();
         System.out.println(app.getStudentsList().getNode("Foo").getCourses().size);
-
     }
     public void switchToDepartment(String departmentName)
     {

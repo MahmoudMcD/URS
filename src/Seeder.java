@@ -29,6 +29,12 @@ public class Seeder {
         courses.add("Circuits",30);
         courses.getNode(30).addStudent("Foo",students);
         courses.getNode(30).addStudent("Bar",students);
+        System.out.println(students.getNode("Foo").getCourses().size+"\n");
+        students.getNode("Foo").removeCourse(courses.getNode(30),courses,1,0);
+
+        System.out.println(courses.getNode(30).getNoOfStudents()+"\n");
+        System.out.println(students.getNode("Foo").getCourses().size+"\n");
+
     }
 
 }

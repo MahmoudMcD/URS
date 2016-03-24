@@ -59,6 +59,7 @@ public class SPNode
         this.id = id;
     }
 
+
     public CLinkedList getCourses() {
         return courses;
     }
@@ -103,9 +104,17 @@ public class SPNode
             }
         }
     }
+
+
     public static SPNode returnCopy(SPNode spNode)
     {
         SPNode newNode = new SPNode(spNode.getEmail(), spNode.getName(), spNode.getId(),spNode.getDepartment(),null, null);
         return newNode;
+    }
+
+    //Dummy getter for department name
+    public int getDepid()
+    {
+        return department.getId();
     }
 }

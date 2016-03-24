@@ -1,5 +1,3 @@
-
-
 /**
  * Created by mcd on 20/03/16.
  * this class is to mange all other classes and handle orders from GUI
@@ -17,8 +15,8 @@ public class Launcher {
         profList = new SPLinkedList();
         departmentList = new DLinkedList();
         courseList = new CLinkedList();
-        Seeder.seed(studentsList, profList, departmentList,courseList);
-        //studentsList.printLinkedList();
+        Seeder.seed(studentsList, profList, departmentList, courseList);
+
     }
 
     public String[] getNamesInArray(SPLinkedList linkedList)
@@ -92,6 +90,11 @@ public class Launcher {
             allProfessors.getNode(professors[i]).removeCourse(course,allCourses,0,1);
         }
     }
+
+    public CLinkedList getCourseList() {
+        return courseList;
+    }
+
     public SPLinkedList getStudentsList() {
         return studentsList;
     }
@@ -102,10 +105,6 @@ public class Launcher {
 
     public SPLinkedList getProfList() {
         return profList;
-    }
-
-    public CLinkedList getCourseList() {
-        return courseList;
     }
 
     public void setStudentsList(SPLinkedList studentsList) {
@@ -120,16 +119,20 @@ public class Launcher {
         this.departmentList = departmentList;
     }
 
-    public void setCourseList(CLinkedList courseList) {
-        this.courseList = courseList;
-    }
-
     private String[] getArray(String[] prevArray)
     {
         int newSize = prevArray.length * 2;
         String[] newArray =  new String[newSize];
         System.arraycopy(prevArray, 0, newArray, 0, prevArray.length);
         return newArray;
+    }
+
+    public void nullStudentsInDep(SPLinkedList studentsInDep)
+    {
+        for (SPNode student: studentsInDep.getNodes())
+        {
+            studentsList.getNode(student.getId()).setDepartment(null);
+        }
     }
 
 

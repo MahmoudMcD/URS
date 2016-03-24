@@ -5,7 +5,7 @@
 public class CNode {
     public String name;
     public int id;
-    public int noOfStudents=0,noOfProfessors=0;
+    private int noOfStudents=0,noOfProfessors=0;
     public DLinkedList departmens;
     public SPLinkedList students;
     public SPLinkedList professors;

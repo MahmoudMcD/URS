@@ -20,10 +20,26 @@ public interface LinkedList<Type> {
     void removeNode(int id);
 
 
-    default  Type[] getArray(Type[] prevArray)
+    default  SPNode[] getArray(SPNode[] prevArray)
     {
         int newSize = prevArray.length * 2;
-        Type[] newArray = (Type[]) new Object[newSize];
+        SPNode[] newArray = new SPNode[newSize];
+        System.arraycopy(prevArray, 0, newArray, 0, prevArray.length);
+        return newArray;
+    }
+
+    default CNode[] getArray(CNode[] prevArray)
+    {
+        int newSize = prevArray.length * 2;
+        CNode[] newArray = new CNode[newSize];
+        System.arraycopy(prevArray, 0, newArray, 0, prevArray.length);
+        return newArray;
+    }
+
+    default DNode[] getArray(DNode[] prevArray)
+    {
+        int newSize = prevArray.length *2;
+        DNode[] newArray = new DNode[newSize];
         System.arraycopy(prevArray, 0, newArray, 0, prevArray.length);
         return newArray;
     }

@@ -2,27 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="53076dd6-f720-4ad7-a13a-6a996864fc27" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/EditWindows.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/GUIHelpers.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/URS/ApplicationGUI.class" afterPath="$PROJECT_DIR$/out/production/URS/ApplicationGUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/URS/CLinkedList.class" afterPath="$PROJECT_DIR$/out/production/URS/CLinkedList.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/URS/CNode.class" afterPath="$PROJECT_DIR$/out/production/URS/CNode.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/URS/DLinkedList.class" afterPath="$PROJECT_DIR$/out/production/URS/DLinkedList.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/URS/DNode.class" afterPath="$PROJECT_DIR$/out/production/URS/DNode.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/URS/Launcher.class" afterPath="$PROJECT_DIR$/out/production/URS/Launcher.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/URS/LinkedList.class" afterPath="$PROJECT_DIR$/out/production/URS/LinkedList.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/URS/SPLinkedList.class" afterPath="$PROJECT_DIR$/out/production/URS/SPLinkedList.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/URS/SPNode.class" afterPath="$PROJECT_DIR$/out/production/URS/SPNode.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/URS/Seeder.class" afterPath="$PROJECT_DIR$/out/production/URS/Seeder.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ApplicationGUI.java" afterPath="$PROJECT_DIR$/src/ApplicationGUI.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CLinkedList.java" afterPath="$PROJECT_DIR$/src/CLinkedList.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CNode.java" afterPath="$PROJECT_DIR$/src/CNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DNode.java" afterPath="$PROJECT_DIR$/src/DNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Launcher.java" afterPath="$PROJECT_DIR$/src/Launcher.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LinkedList.java" afterPath="$PROJECT_DIR$/src/LinkedList.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SPNode.java" afterPath="$PROJECT_DIR$/src/SPNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Seeder.java" afterPath="$PROJECT_DIR$/src/Seeder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EditWindows.java" afterPath="$PROJECT_DIR$/src/EditWindows.java" />
     </list>
     <ignored path="URS.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -69,24 +51,25 @@
         <entry file="file://$PROJECT_DIR$/src/SPNode.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="105" column="5" selection-start-line="105" selection-start-column="5" selection-end-line="105" selection-end-column="5" />
-              <folding />
+              <caret line="117" column="0" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
+              <folding>
+                <element signature="e#3590#3591#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ApplicationGUI.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ApplicationGUI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ApplicationGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4679335">
-              <caret line="100" column="29" selection-start-line="100" selection-start-column="29" selection-end-line="100" selection-end-column="29" />
+            <state vertical-scroll-proportion="2.1935484">
+              <caret line="198" column="62" selection-start-line="198" selection-start-column="46" selection-end-line="198" selection-end-column="62" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#makeBranch#0;class#ApplicationGUI#0" expanded="false" />
                 <element signature="method#showWelcomeScene#0;class#ApplicationGUI#0" expanded="false" />
                 <element signature="method#makeBranches#0;class#ApplicationGUI#0" expanded="false" />
                 <element signature="method#getDepartments#0;class#ApplicationGUI#0" expanded="false" />
-                <element signature="method#setDepartmentTable#0;class#ApplicationGUI#0" expanded="false" />
                 <element signature="method#setCoursesTable#0;class#ApplicationGUI#0" expanded="false" />
                 <element signature="method#switchTable#0;class#ApplicationGUI#0" expanded="false" />
                 <element signature="method#addDepartment#0;class#ApplicationGUI#0" expanded="false" />
@@ -108,11 +91,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EditWindows.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="EditWindows.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/EditWindows.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="82" column="45" selection-start-line="82" selection-start-column="45" selection-end-line="82" selection-end-column="45" />
+            <state vertical-scroll-proportion="0.65795726">
+              <caret line="132" column="5" selection-start-line="132" selection-start-column="5" selection-end-line="132" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -154,7 +137,7 @@
         <entry file="file://$PROJECT_DIR$/src/Seeder.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="39" column="1" selection-start-line="39" selection-start-column="1" selection-end-line="39" selection-end-column="1" />
+              <caret line="28" column="35" selection-start-line="28" selection-start-column="35" selection-end-line="28" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -164,7 +147,7 @@
         <entry file="file://$PROJECT_DIR$/src/Launcher.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="91" column="5" selection-start-line="91" selection-start-column="5" selection-end-line="91" selection-end-column="5" />
+              <caret line="82" column="9" selection-start-line="82" selection-start-column="9" selection-end-line="82" selection-end-column="9" />
               <folding>
                 <element signature="method#getNamesInArray#0;class#Launcher#0" expanded="false" />
                 <element signature="method#getNamesInArray#1;class#Launcher#0" expanded="false" />
@@ -209,12 +192,12 @@
         <option value="$PROJECT_DIR$/src/CLinkedList.java" />
         <option value="$PROJECT_DIR$/src/SPLinkedList.java" />
         <option value="$PROJECT_DIR$/src/LinkedList.java" />
-        <option value="$PROJECT_DIR$/src/EditWindows.java" />
         <option value="$PROJECT_DIR$/src/CNode.java" />
         <option value="$PROJECT_DIR$/src/SPNode.java" />
         <option value="$PROJECT_DIR$/src/Launcher.java" />
         <option value="$PROJECT_DIR$/src/Seeder.java" />
         <option value="$PROJECT_DIR$/src/ApplicationGUI.java" />
+        <option value="$PROJECT_DIR$/src/EditWindows.java" />
       </list>
     </option>
   </component>
@@ -609,10 +592,10 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295838" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31343284" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32686567" sideWeight="0.5087848" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28208956" sideWeight="0.50292826" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32921347" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32686567" sideWeight="0.49121523" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28208956" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32686567" sideWeight="0.48828697" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28208956" sideWeight="0.49707174" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19985358" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -768,7 +751,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#3590#3591#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -839,7 +824,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#3590#3591#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -894,7 +881,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#3590#3591#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -965,7 +954,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#3590#3591#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1045,6 +1036,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8123515">
+          <caret line="19" column="30" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="57" column="5" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Launcher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="82" column="9" selection-start-line="82" selection-start-column="9" selection-end-line="82" selection-end-column="9" />
+          <folding>
+            <element signature="method#getNamesInArray#0;class#Launcher#0" expanded="false" />
+            <element signature="method#getNamesInArray#1;class#Launcher#0" expanded="false" />
+            <element signature="e#2910#2911#0" expanded="true" />
+            <element signature="e#2945#2946#0" expanded="true" />
+            <element signature="method#getArray#0;class#Launcher#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="jar:///usr/lib/jvm/java-8-oracle/javafx-src.zip!/javafx/scene/control/TableView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1061,75 +1084,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8123515">
-          <caret line="19" column="30" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/EditWindows.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="82" column="45" selection-start-line="82" selection-start-column="45" selection-end-line="82" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="57" column="5" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SPNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="105" column="5" selection-start-line="105" selection-start-column="5" selection-end-line="105" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Launcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="91" column="5" selection-start-line="91" selection-start-column="5" selection-end-line="91" selection-end-column="5" />
-          <folding>
-            <element signature="method#getNamesInArray#0;class#Launcher#0" expanded="false" />
-            <element signature="method#getNamesInArray#1;class#Launcher#0" expanded="false" />
-            <element signature="e#2910#2911#0" expanded="true" />
-            <element signature="e#2945#2946#0" expanded="true" />
-            <element signature="method#getArray#0;class#Launcher#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Seeder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="39" column="1" selection-start-line="39" selection-start-column="1" selection-end-line="39" selection-end-column="1" />
+          <caret line="28" column="35" selection-start-line="28" selection-start-column="35" selection-end-line="28" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ApplicationGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4679335">
-          <caret line="100" column="29" selection-start-line="100" selection-start-column="29" selection-end-line="100" selection-end-column="29" />
+        <state vertical-scroll-proportion="2.1935484">
+          <caret line="198" column="62" selection-start-line="198" selection-start-column="46" selection-end-line="198" selection-end-column="62" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#makeBranch#0;class#ApplicationGUI#0" expanded="false" />
             <element signature="method#showWelcomeScene#0;class#ApplicationGUI#0" expanded="false" />
             <element signature="method#makeBranches#0;class#ApplicationGUI#0" expanded="false" />
             <element signature="method#getDepartments#0;class#ApplicationGUI#0" expanded="false" />
-            <element signature="method#setDepartmentTable#0;class#ApplicationGUI#0" expanded="false" />
             <element signature="method#setCoursesTable#0;class#ApplicationGUI#0" expanded="false" />
             <element signature="method#switchTable#0;class#ApplicationGUI#0" expanded="false" />
             <element signature="method#addDepartment#0;class#ApplicationGUI#0" expanded="false" />
@@ -1146,6 +1118,26 @@
             <element signature="method#deleteProf#0;class#ApplicationGUI#0" expanded="false" />
             <element signature="method#addProf#0;class#ApplicationGUI#0" expanded="false" />
             <element signature="method#addCourse#0;class#ApplicationGUI#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SPNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="117" column="0" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
+          <folding>
+            <element signature="e#3590#3591#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/EditWindows.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.65795726">
+          <caret line="132" column="5" selection-start-line="132" selection-start-column="5" selection-end-line="132" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

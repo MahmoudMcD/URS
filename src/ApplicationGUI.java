@@ -103,7 +103,7 @@ public class ApplicationGUI extends Application {
         //for courses
         setCoursesTable();
         //setStudentTable();
-        //EditWindows.editStudentWindow(app, 3342);
+        EditWindows.editStudentWindow(app, 3342);
 
 
         layoutMain.setLeft(tree);

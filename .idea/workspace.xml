@@ -9,12 +9,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/URS/SPNode.class" afterPath="$PROJECT_DIR$/out/production/URS/SPNode.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/URS/Seeder.class" afterPath="$PROJECT_DIR$/out/production/URS/Seeder.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ApplicationGUI.java" afterPath="$PROJECT_DIR$/src/ApplicationGUI.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CNode.java" afterPath="$PROJECT_DIR$/src/CNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DNode.java" afterPath="$PROJECT_DIR$/src/DNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Launcher.java" afterPath="$PROJECT_DIR$/src/Launcher.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SPNode.java" afterPath="$PROJECT_DIR$/src/SPNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Seeder.java" afterPath="$PROJECT_DIR$/src/Seeder.java" />
     </list>
     <ignored path="URS.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -761,7 +755,7 @@
       <workItem from="1458735880478" duration="741000" />
       <workItem from="1458737824939" duration="5847000" />
       <workItem from="1458758905935" duration="2512000" />
-      <workItem from="1458843569829" duration="5283000" />
+      <workItem from="1458843569829" duration="5358000" />
     </task>
     <task id="LOCAL-00001" summary="courses node&amp;linked list&amp; added to student">
       <created>1458433019518</created>
@@ -787,11 +781,17 @@
       <option name="project" value="LOCAL" />
       <updated>1458761295344</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="remove course updated and add&amp;remove course from SP">
+      <created>1458848918993</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1458848918993</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27679000" />
+    <option name="totallyTimeSpent" value="27754000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -872,7 +872,8 @@
     <MESSAGE value="courses node&amp;linked list&amp; added to student" />
     <MESSAGE value="course add course remove to GUI" />
     <MESSAGE value="add courses and delet added to GUI" />
-    <option name="LAST_COMMIT_MESSAGE" value="add courses and delet added to GUI" />
+    <MESSAGE value="remove course updated and add&amp;remove course from SP" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove course updated and add&amp;remove course from SP" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

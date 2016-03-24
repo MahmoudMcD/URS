@@ -89,6 +89,7 @@ public class DNode
     public void removeStudent(int id)
     {
         students.removeNode(id);
+        noOfStudents--;
     }
 
 
@@ -96,6 +97,12 @@ public class DNode
     public void removeProf(SPNode prof)
     {
         professors.removeNode(prof.getId());
+    }
+
+    public void removeProf(int id)
+    {
+        professors.removeNode(id);
+        noOfProfessors--;
     }
 
     public String getTitle() {

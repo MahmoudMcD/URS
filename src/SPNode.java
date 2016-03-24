@@ -59,13 +59,62 @@ public class SPNode
         this.id = id;
     }
 
-    public void addCourse(CNode course){
-        courses.add(course.name,course.id);
+
+    public CLinkedList getCourses() {
+        return courses;
     }
+
+    public void setCourses(CLinkedList courses) {
+        this.courses = courses;
+    }
+
+    public void addCourse(CNode course,CLinkedList allCourses,int profOrStudent,int withinCourses){
+        CNode courseCopy = CNode.returnCopy(course);
+        courses.add(courseCopy.name,courseCopy.id);
+        if(withinCourses ==0) {
+            switch (profOrStudent) {
+                case 0:
+                    allCourses.getNode(courseCopy.getId()).getProfessors().add(SPNode.returnCopy(this), 0);
+                    int k = allCourses.getNode(courseCopy.getId()).getNoOfProfessors();
+                    allCourses.getNode(courseCopy.getId()).setNoOfProfessors(k + 1);
+                    break;
+                case 1:
+                    allCourses.getNode(courseCopy.getId()).getStudents().add(SPNode.returnCopy(this), 0);
+                    int j = allCourses.getNode(courseCopy.getId()).getNoOfStudents();
+                    allCourses.getNode(courseCopy.getId()).setNoOfStudents(j + 1);
+                    break;
+            }
+        }
+
+    }
+    public void removeCourse(CNode course,CLinkedList allCourses,int profOrStudent, int withinCourses){
+        CNode courseCopy = CNode.returnCopy(course);
+        courses.removeNode(courseCopy.name);
+        if(withinCourses == 0) {
+            switch (profOrStudent) {
+                case 0:
+                    allCourses.getNode(courseCopy.getId()).getProfessors().removeNode(this.getId());
+                    int k = allCourses.getNode(courseCopy.getId()).getNoOfProfessors();
+                    allCourses.getNode(courseCopy.getId()).setNoOfProfessors(k - 1);
+                    break;
+                case 1:
+                    allCourses.getNode(courseCopy.getId()).getStudents().removeNode(this.id);
+                    int j = allCourses.getNode(courseCopy.getId()).getNoOfStudents();
+                    allCourses.getNode(courseCopy.getId()).setNoOfStudents(j - 1);
+            }
+        }
+    }
+
 
     public static SPNode returnCopy(SPNode spNode)
     {
         SPNode newNode = new SPNode(spNode.getEmail(), spNode.getName(), spNode.getId(),spNode.getDepartment(),null, null);
         return newNode;
+    }
+
+    //Dummy getter for department name
+    public int getDepid()
+    {
+        return department.getId();
     }
 }

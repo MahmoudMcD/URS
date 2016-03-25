@@ -35,6 +35,8 @@ public class Seeder {
         System.out.println(courses.getNode(30).getNoOfStudents()+"\n");
         System.out.println(students.getNode("Foo").getCourses().size+"\n");
 
+        professors.getNode(4).addCourse(courses.getNode(25),courses,0,0);
+
     }
 
 }

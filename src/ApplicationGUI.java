@@ -33,7 +33,7 @@ public class ApplicationGUI extends Application {
     TableColumn<SPNode, Integer> spIdColumn, profNameColumn, profIdColumn, profEmailColumn;
     TextField depTitleField, depIdField, studNameField, studEmailField, studIdField;
     TextField profNameField, profIdField, profEmailField;
-    Button depTableAddButton, depTableDeleteButton, insideDepStudAdd, insideDepProfAdd, insideDepStudDelete;
+    Button depTableAddButton, depTableDeleteButton, insideDepStudAdd, insideDepProfAdd, insideDepStudDelete,courseShowStudents,courseShowProfs;
     Button insideDepProfDelete;
     VBox insideDepartmentTableVBox;
     Label insideDepName, noOfStudents, noOfProfs;
@@ -64,6 +64,16 @@ public class ApplicationGUI extends Application {
     TextField coursesNameTextField,coursesIdTextField;
     Button coursesAdd,coursesDelete;
     // end
+
+    //show students in one course
+    TableView<SPNode> studentsInCourseTable;
+    TableColumn<SPNode,String> studentNameInCourse,studentEmailInCourse;
+    TableColumn<SPNode,Integer> studentIdInCourse;
+
+    //show professors in one course
+    TableView<SPNode> profsInCourseTable;
+    TableColumn<SPNode,String> profNameInCourse,profEmailInCourse;
+    TableColumn<SPNode,Integer> profIdInCourse;
 
 
     public static void main(String[] args) {
@@ -208,6 +218,18 @@ public class ApplicationGUI extends Application {
         courses.addAll(app.getCourseList().getNodes());
         return  courses;
     }
+
+    public ObservableList<SPNode> getStudentsInCourse(CNode course){
+        ObservableList<SPNode> students = FXCollections.observableArrayList();
+        students.addAll(app.getCourseList().getNode(course.name).getStudents().getNodes());
+        return students;
+    }
+
+    public ObservableList<SPNode> getProfsInCourse(CNode course){
+        ObservableList<SPNode> profs = FXCollections.observableArrayList();
+        profs.addAll(app.getCourseList().getNode(course.name).getProfessors().getNodes());
+        return profs;
+    }
     public void setCoursesTable(){
         courseTitleCol = new TableColumn<>("Title");
         courseTitleCol.setMinWidth(200);
@@ -231,6 +253,8 @@ public class ApplicationGUI extends Application {
 
         coursesAdd = new Button("add");
         coursesDelete = new Button("Delete");
+        courseShowStudents = new Button("Show Students");
+        courseShowProfs = new Button("Show Professors");
         coursesNameTextField = new TextField();
         coursesIdTextField = new TextField();
 
@@ -242,11 +266,84 @@ public class ApplicationGUI extends Application {
 
         coursesTableTools= new HBox(10);
         coursesTableTools.setPadding(new Insets(10, 10, 10, 10));
-        coursesTableTools.getChildren().addAll(coursesNameTextField,coursesIdTextField,coursesAdd,coursesDelete);
+        coursesTableTools.getChildren().addAll(coursesNameTextField,coursesIdTextField,coursesAdd,coursesDelete,courseShowStudents,courseShowProfs);
 
         coursesAdd.setOnAction(e -> addCourse());
         coursesDelete.setOnAction(e -> removeCourse());
 
+        courseShowStudents.setOnAction(e -> showStudentInOneCourse());
+        courseShowProfs.setOnAction(e -> showProfsInOneCourse());
+
+    }
+
+    public void showStudentsInCourse(String courseName){
+        CNode course = app.getCourseList().getNode(courseName);
+
+        studentNameInCourse = new TableColumn<>("Name");
+        studentNameInCourse.setMinWidth(200);
+        studentNameInCourse.setCellValueFactory(new PropertyValueFactory<>("name"));
+
+        studentEmailInCourse = new TableColumn<>("Email");
+        studentEmailInCourse.setMinWidth(200);
+        studentEmailInCourse.setCellValueFactory(new PropertyValueFactory<>("email"));
+
+        studentIdInCourse = new TableColumn<>("ID");
+        studentIdInCourse.setMinWidth(100);
+        studentIdInCourse.setCellValueFactory(new PropertyValueFactory<>("id"));
+
+        studentsInCourseTable = new TableView<>();
+        studentsInCourseTable.setItems(getStudentsInCourse(course));
+        studentsInCourseTable.getColumns().addAll(studentNameInCourse,studentEmailInCourse,studentIdInCourse);
+
+
+        Stage studentsWindow = new Stage();
+        studentsWindow.setTitle("Students Of "+ courseName);
+        studentsWindow.setMinWidth(550);
+        studentsWindow.setMinHeight(350);
+
+        StackPane lay = new StackPane();
+
+        lay.getChildren().add(studentsInCourseTable);
+
+        Scene studentsScene = new Scene(lay,550,350);
+
+        studentsWindow.setScene(studentsScene);
+        studentsWindow.show();
+    }
+
+    public void showProfsInCourse(String courseName){
+        CNode course = app.getCourseList().getNode(courseName);
+
+        profNameInCourse = new TableColumn<>("Name");
+        profNameInCourse.setMinWidth(200);
+        profNameInCourse.setCellValueFactory(new PropertyValueFactory<>("name"));
+
+        profEmailInCourse = new TableColumn<>("Email");
+        profEmailInCourse.setMinWidth(200);
+        profEmailInCourse.setCellValueFactory(new PropertyValueFactory<>("email"));
+
+        profIdInCourse = new TableColumn<>("ID");
+        profIdInCourse.setMinWidth(100);
+        profIdInCourse.setCellValueFactory(new PropertyValueFactory<>("id"));
+
+        profsInCourseTable = new TableView<>();
+        profsInCourseTable.setItems(getProfsInCourse(course));
+        profsInCourseTable.getColumns().addAll(profNameInCourse,profEmailInCourse,profIdInCourse);
+
+
+        Stage profsWindow = new Stage();
+        profsWindow.setTitle("Professors Of "+ courseName);
+        profsWindow.setMinWidth(550);
+        profsWindow.setMinHeight(350);
+
+        StackPane lay = new StackPane();
+
+        lay.getChildren().add(profsInCourseTable);
+
+        Scene profsScene = new Scene(lay,550,350);
+
+        profsWindow.setScene(profsScene);
+        profsWindow.show();
     }
 
     public void switchTable(String tableName)
@@ -678,6 +775,23 @@ public class ApplicationGUI extends Application {
         coursesNameTextField.clear();
         coursesIdTextField.clear();
         //System.out.println(app.getStudentsList().getNode("Foo").getCourses().size);
+    }
+
+    public void showStudentInOneCourse(){
+        String name = coursesNameTextField.getText();
+        if(app.getCourseList().getNode(name) != null){
+            showStudentsInCourse(name);
+        }
+        coursesNameTextField.clear();
+        coursesIdTextField.clear();
+    }
+    public void showProfsInOneCourse(){
+        String name = coursesNameTextField.getText();
+        if(app.getCourseList().getNode(name) != null){
+            showProfsInCourse(name);
+        }
+        coursesNameTextField.clear();
+        coursesIdTextField.clear();
     }
 
 

@@ -148,7 +148,6 @@ public class SPLinkedList implements LinkedList<SPNode> {
         return array;
     }
 
-
     /* Removing Student/Professor using this function
      * ID used to avoid mistakes of choosing the right node
      */

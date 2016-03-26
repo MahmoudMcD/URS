@@ -52,7 +52,7 @@ public class CNode {
         SPNode prof = allProfessorsLinkedList.getNode(name);
         if(prof != null){
             prof.removeCourse(this,null,0,1);
-            this.students.removeNode(prof.getId());
+            this.professors.removeNode(prof.getId());
             noOfProfessors--;
         }
     }

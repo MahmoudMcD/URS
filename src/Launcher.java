@@ -60,6 +60,34 @@ public class Launcher {
         return names;
     }
 
+    //changed here
+    public String[] getNamesInArray(CLinkedList linkedList)
+    {
+        String[] names = new String[10];
+        int size = 0;
+        for (CNode course: linkedList.getNodes())
+        {
+            if (course == null)
+                break;
+
+            if (size == names.length)
+                names = getArray(names);
+
+            names[size] = course.getName();
+            size++;
+        }
+
+        if (size != names.length)
+        {
+            String[] newNames = new String[size];
+            System.arraycopy(names,0, newNames,0, size);
+            names = newNames;
+        }
+
+        return names;
+    }
+
+
     public String[] getNamesOfStudentsInCourseInArray (CNode course){
         String[] students = new String[10];
         int i;

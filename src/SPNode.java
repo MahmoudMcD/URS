@@ -115,6 +115,8 @@ public class SPNode
     //Dummy getter for department name
     public int getDepid()
     {
+        if (department == null)
+            return 0;
         return department.getId();
     }
 }

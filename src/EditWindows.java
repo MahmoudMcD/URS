@@ -103,7 +103,7 @@ public class EditWindows {
 
         scene = new Scene(layoutCont, 800, 700);
         window.setScene(scene);
-        window.showAndWait();
+        //window.showAndWait();
     }
 
     public static void addCourseToStudent(SPNode student, int courseId, TableView<CNode> table)

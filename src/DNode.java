@@ -5,8 +5,6 @@
  */
 public class DNode
 {
-
-
     private String title;
     private int id;
     private int noOfStudents;
@@ -91,8 +89,6 @@ public class DNode
         students.removeNode(id);
         noOfStudents--;
     }
-
-
 
     public void removeProf(SPNode prof)
     {

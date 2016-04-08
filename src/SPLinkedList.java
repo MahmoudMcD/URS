@@ -32,7 +32,7 @@ public class SPLinkedList implements LinkedList<SPNode> {
         sentinal.next = newNode;
         temp.prev = newNode;
 
-        if (withinDepartment == 0)
+        if (withinDepartment == 0   )
         {
             if (type == 1)
                 department.addProf(newNode);
@@ -147,7 +147,6 @@ public class SPLinkedList implements LinkedList<SPNode> {
 
         return array;
     }
-
 
     /* Removing Student/Professor using this function
      * ID used to avoid mistakes of choosing the right node

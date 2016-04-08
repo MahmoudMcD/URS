@@ -56,15 +56,16 @@ public class ApplicationGUI extends Application {
     Button profsAddButton, profsDeleteButton;
 
 
-    // courses here
+    // courses list gui elements
     TableView<CNode> coursesTable;
     TableColumn<CNode,String> courseTitleCol;
     TableColumn<CNode,Integer> courseIdCol,courseNoOfStudentsCol,courseNoOfProfessorsCol;
     HBox coursesTableTools;
     TextField coursesNameTextField,coursesIdTextField;
-    Button coursesAdd,coursesDelete;
+    Button coursesAdd,coursesDelete,courseShowStudents,courseShowProfs,courseAddStudent_Prof;
     // end
 
+    //removed elements of course info
 
     public static void main(String[] args) {
         launch(args);
@@ -72,6 +73,7 @@ public class ApplicationGUI extends Application {
 
     public void start(Stage primaryStage)
     {
+
         window = primaryStage;
         window.setTitle("URS Application");
         app = new Launcher();
@@ -208,6 +210,8 @@ public class ApplicationGUI extends Application {
         courses.addAll(app.getCourseList().getNodes());
         return  courses;
     }
+
+    //removed 2 methods down here
     public void setCoursesTable(){
         courseTitleCol = new TableColumn<>("Title");
         courseTitleCol.setMinWidth(200);
@@ -231,6 +235,9 @@ public class ApplicationGUI extends Application {
 
         coursesAdd = new Button("add");
         coursesDelete = new Button("Delete");
+        courseShowStudents = new Button("Show Students");
+        courseShowProfs = new Button("Show Professors");
+        courseAddStudent_Prof = new Button("Add Student/Prof");
         coursesNameTextField = new TextField();
         coursesIdTextField = new TextField();
 
@@ -242,12 +249,36 @@ public class ApplicationGUI extends Application {
 
         coursesTableTools= new HBox(10);
         coursesTableTools.setPadding(new Insets(10, 10, 10, 10));
-        coursesTableTools.getChildren().addAll(coursesNameTextField,coursesIdTextField,coursesAdd,coursesDelete);
+        coursesTableTools.getChildren().addAll(coursesNameTextField,coursesIdTextField,coursesAdd,coursesDelete,courseShowStudents,courseShowProfs,courseAddStudent_Prof);
 
         coursesAdd.setOnAction(e -> addCourse());
         coursesDelete.setOnAction(e -> removeCourse());
 
+        //changed here
+        courseShowStudents.setOnAction(e -> {
+            ObservableList<CNode> selectedStudents;
+            selectedStudents = coursesTable.getSelectionModel().getSelectedItems();
+            for(CNode course : selectedStudents)
+                CourseInfoWindow.showStudentsInCourse(course,app);
+        });
+        courseShowProfs.setOnAction(e -> {
+            ObservableList<CNode> selectedProfs;
+            selectedProfs = coursesTable.getSelectionModel().getSelectedItems();
+            for(CNode course: selectedProfs)
+                CourseInfoWindow.showProfsInCourse(course,app);
+        });
+
+        courseAddStudent_Prof.setOnAction(e -> {
+            ObservableList<CNode> selectedStudents;
+            selectedStudents = coursesTable.getSelectionModel().getSelectedItems();
+            for(CNode course : selectedStudents)
+                CourseAddWindow.setWindow(course,app);
+        });
+        //end
+
     }
+
+    //removed 2 methods down here
 
     public void switchTable(String tableName)
     {
@@ -561,10 +592,18 @@ public class ApplicationGUI extends Application {
 
         for (SPNode student: selectedStudents)
         {
+            //changed here
+            String[] courses = app.getNamesInArray(student.getCourses());
+            for(int i=0;i<courses.length;i++){
+                app.getCourseList().getNode(courses[i]).removeStudent(student.getName(),app.getStudentsList());
+            }
+            //end of change
             app.getStudentsList().removeNode(student.getId());
             student.getDepartment().removeStudent(student.getId());
         }
-
+        //changed here
+        setCoursesTable();
+        //end of change
         selectedStudents.forEach(allStudents::remove);
     }
 
@@ -629,10 +668,18 @@ public class ApplicationGUI extends Application {
 
         for(SPNode prof: selectedProfs)
         {
+            //changed here
+            String[] courses = app.getNamesInArray(prof.getCourses());
+            for(int i=0;i<courses.length;i++){
+                app.getCourseList().getNode(courses[i]).removeProf(prof.getName(),app.getProfList());
+            }
+            //end of change
             app.getProfList().removeNode(prof.getId());
             prof.getDepartment().removeProf(prof.getId());
         }
-
+        //changed here
+        setCoursesTable();
+        //end of change
         selectedProfs.forEach(allProfs::remove);
     }
 
@@ -661,24 +708,24 @@ public class ApplicationGUI extends Application {
         coursesIdTextField.clear();
     }
 
-
+    //changed here
     public void removeCourse(){
-        String name = coursesNameTextField.getText();
-        int id = Integer.parseInt(coursesIdTextField.getText());
-        System.out.println(app.getStudentsList().getNode("Foo").getCourses().size);
-        if(app.getCourseList().getNode(id) == null)
-            return;
-        CNode course = app.getCourseList().getNode(name);
-        String[] studentsInThisCourse = app.getNamesOfStudentsInCourseInArray(course);
-        String[] professorsInThisCourse = app.getNamesOfProfessorsInCourseInArray(course);
-        app.removeCourseFromStudents(course,studentsInThisCourse,app.getStudentsList(),app.getCourseList());
-        app.removeCourseFromProfessors(course,professorsInThisCourse,app.getProfList(),app.getCourseList());
-        app.getCourseList().removeNode(name);
-        coursesTable.getItems().remove(course);
-        coursesNameTextField.clear();
-        coursesIdTextField.clear();
-        //System.out.println(app.getStudentsList().getNode("Foo").getCourses().size);
+
+        ObservableList<CNode> allCourses,selectedCourses;
+        allCourses = coursesTable.getItems();
+        selectedCourses = coursesTable.getSelectionModel().getSelectedItems();
+        for(CNode course : selectedCourses){
+
+            String[] studentsInThisCourse = app.getNamesOfStudentsInCourseInArray(course);
+            String[] professorsInThisCourse = app.getNamesOfProfessorsInCourseInArray(course);
+            app.removeCourseFromStudents(course,studentsInThisCourse,app.getStudentsList(),app.getCourseList());
+            app.removeCourseFromProfessors(course,professorsInThisCourse,app.getProfList(),app.getCourseList());
+            app.getCourseList().removeNode(course.getName());
+
+        }
+        selectedCourses.forEach(allCourses::remove);
     }
+    //end
 
-
+    //removed 2 methods down here
 }

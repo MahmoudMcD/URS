@@ -33,7 +33,7 @@ public class ApplicationGUI extends Application {
     TableColumn<SPNode, Integer> spIdColumn, profNameColumn, profIdColumn, profEmailColumn;
     TextField depTitleField, depIdField, studNameField, studEmailField, studIdField;
     TextField profNameField, profIdField, profEmailField;
-    Button depTableAddButton, depTableDeleteButton, insideDepStudAdd, insideDepProfAdd, insideDepStudDelete,courseShowStudents,courseShowProfs;
+    Button depTableAddButton, depTableDeleteButton, insideDepStudAdd, insideDepProfAdd, insideDepStudDelete;
     Button insideDepProfDelete;
     VBox insideDepartmentTableVBox;
     Label insideDepName, noOfStudents, noOfProfs;
@@ -62,7 +62,7 @@ public class ApplicationGUI extends Application {
     TableColumn<CNode,Integer> courseIdCol,courseNoOfStudentsCol,courseNoOfProfessorsCol;
     HBox coursesTableTools;
     TextField coursesNameTextField,coursesIdTextField;
-    Button coursesAdd,coursesDelete;
+    Button coursesAdd,coursesDelete,courseShowStudents,courseShowProfs,courseAddStudent_Prof;
     // end
 
     //removed elements of course info
@@ -73,6 +73,7 @@ public class ApplicationGUI extends Application {
 
     public void start(Stage primaryStage)
     {
+
         window = primaryStage;
         window.setTitle("URS Application");
         app = new Launcher();
@@ -236,6 +237,7 @@ public class ApplicationGUI extends Application {
         coursesDelete = new Button("Delete");
         courseShowStudents = new Button("Show Students");
         courseShowProfs = new Button("Show Professors");
+        courseAddStudent_Prof = new Button("Add Student/Prof");
         coursesNameTextField = new TextField();
         coursesIdTextField = new TextField();
 
@@ -247,25 +249,30 @@ public class ApplicationGUI extends Application {
 
         coursesTableTools= new HBox(10);
         coursesTableTools.setPadding(new Insets(10, 10, 10, 10));
-        coursesTableTools.getChildren().addAll(coursesNameTextField,coursesIdTextField,coursesAdd,coursesDelete,courseShowStudents,courseShowProfs);
+        coursesTableTools.getChildren().addAll(coursesNameTextField,coursesIdTextField,coursesAdd,coursesDelete,courseShowStudents,courseShowProfs,courseAddStudent_Prof);
 
         coursesAdd.setOnAction(e -> addCourse());
         coursesDelete.setOnAction(e -> removeCourse());
 
         //changed here
         courseShowStudents.setOnAction(e -> {
-            ObservableList<CNode> allStudents,selectedStudents;
-            allStudents = coursesTable.getItems();
+            ObservableList<CNode> selectedStudents;
             selectedStudents = coursesTable.getSelectionModel().getSelectedItems();
             for(CNode course : selectedStudents)
                 CourseInfoWindow.showStudentsInCourse(course,app);
         });
         courseShowProfs.setOnAction(e -> {
-            ObservableList<CNode> allProfs,selectedProfs;
-            allProfs = coursesTable.getItems();
+            ObservableList<CNode> selectedProfs;
             selectedProfs = coursesTable.getSelectionModel().getSelectedItems();
             for(CNode course: selectedProfs)
                 CourseInfoWindow.showProfsInCourse(course,app);
+        });
+
+        courseAddStudent_Prof.setOnAction(e -> {
+            ObservableList<CNode> selectedStudents;
+            selectedStudents = coursesTable.getSelectionModel().getSelectedItems();
+            for(CNode course : selectedStudents)
+                CourseAddWindow.setWindow(course,app);
         });
         //end
 

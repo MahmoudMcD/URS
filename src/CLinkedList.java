@@ -10,6 +10,8 @@ public class CLinkedList implements LinkedList<CNode>{
         sentinel.priv = sentinel;
     }
 
+    //Same functions as DLinkedList and SPLInkedList
+
     public CNode add(String name, int id) {
         CNode newNode = new CNode(name, id, sentinel.next, sentinel);
         if (sentinel.priv == sentinel)

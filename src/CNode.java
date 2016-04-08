@@ -26,6 +26,11 @@ public class CNode {
         this.professors = new SPLinkedList();
     }
 
+    /* Adding a student to the course is to add a student to the list of students
+     * first the student SPNode is required from the list of all students in application
+     * then a copy of it is added to the list of students in course
+     * same goes for addProfessor
+     */
     public void addStudent(String name,SPLinkedList allStudentLinkedList){
         noOfStudents++;
         SPNode student = allStudentLinkedList.getNode(name);
@@ -33,6 +38,7 @@ public class CNode {
         students.add(newStudent,0);
         student.addCourse(this,null,1,1);
     }
+
     public void addProfessor(String name,SPLinkedList allProfessorsLinkedList){
         noOfProfessors++;
         SPNode prof = allProfessorsLinkedList.getNode(name);
@@ -40,6 +46,12 @@ public class CNode {
         professors.add(newProf,0);
         prof.addCourse(this,null,0,1);
     }
+
+    /* removing student from a course is to require the student and call removeCourse on
+     * its SPNode the call removeNode on the list of students in the course and decrease the number
+     * of student
+     * same goes for the professors
+     */
     public void removeStudent(String name,SPLinkedList allStudentLinkedList){
         SPNode student = allStudentLinkedList.getNode(name);
         if(student != null){
@@ -56,6 +68,8 @@ public class CNode {
             noOfProfessors--;
         }
     }
+
+    // Setters and Getters
     public String getName(){return this.name;}
 
     public void setName(String name) {this.name = name;}

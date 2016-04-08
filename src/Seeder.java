@@ -1,5 +1,6 @@
 /**
  * Created by mcd on 20/03/16.
+ * this class is used to seed the application
  */
 public class Seeder {
 

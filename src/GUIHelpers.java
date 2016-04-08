@@ -4,6 +4,7 @@ import javafx.scene.layout.VBox;
 
 public class GUIHelpers {
 
+    // Some helpers
     public static  void setBox(HBox box)
     {
         box.setSpacing(10);

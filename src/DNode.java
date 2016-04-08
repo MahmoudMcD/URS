@@ -78,7 +78,6 @@ public class DNode
         return professors;
     }
 
-    /* to be deleted TODO */
     public void removeStudent(SPNode student)
     {
         students.removeNode(student.getId());

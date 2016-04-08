@@ -27,6 +27,7 @@ public class SPNode
         courses = new CLinkedList();
     }
 
+    //Getters and Setters
     public String getName() {
         return name;
     }
@@ -68,6 +69,12 @@ public class SPNode
         this.courses = courses;
     }
 
+    /* this function is used to add the course to a student
+     * if the withinCourses is set to 0 the function also adds the student to the list of students
+     * in the course added
+     * if not this means that the add was called on the student list inside the course therefore no need to
+     * add it to the list < avoiding infinite loop
+     */
     public void addCourse(CNode course,CLinkedList allCourses,int profOrStudent,int withinCourses){
         CNode courseCopy = CNode.returnCopy(course);
         courses.add(courseCopy.name,courseCopy.id);
@@ -87,6 +94,8 @@ public class SPNode
         }
 
     }
+
+    // withinCourses here works the Same as addCourse
     public void removeCourse(CNode course,CLinkedList allCourses,int profOrStudent, int withinCourses){
         CNode courseCopy = CNode.returnCopy(course);
         courses.removeNode(courseCopy.name);
@@ -106,13 +115,17 @@ public class SPNode
     }
 
 
+    /* As the SPNode that represents student/professor is used in many classes that has SPLinkedList in it
+     * return copy is used to return a copy from the original SPNode to avoid changing the next,prev in the
+     * original node
+     */
     public static SPNode returnCopy(SPNode spNode)
     {
         SPNode newNode = new SPNode(spNode.getEmail(), spNode.getName(), spNode.getId(),spNode.getDepartment(),null, null);
         return newNode;
     }
 
-    //Dummy getter for department name
+    //Dummy getter for department id used for the GUI
     public int getDepid()
     {
         if (department == null)

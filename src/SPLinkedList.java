@@ -121,7 +121,7 @@ public class SPLinkedList implements LinkedList<SPNode> {
         return arrayOfSPNodes;
     }
 
-    //Returns an array of all Students/Prof in the list
+    // Returns an array of all Students/Prof in the list
     public SPNode[] getNodes()
     {
         SPNode temp = sentinal.next;

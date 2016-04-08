@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 /**
  * Created by mcd on 20/03/16.
  * GUI Class .. Start the program from here
+ * No need to comment all the functions are clear
  */
 public class ApplicationGUI extends Application {
     Stage window;

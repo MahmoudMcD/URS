@@ -60,7 +60,7 @@ public class Launcher {
         return names;
     }
 
-    //changed here
+    
     public String[] getNamesInArray(CLinkedList linkedList)
     {
         String[] names = new String[10];

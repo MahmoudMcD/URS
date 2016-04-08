@@ -26,7 +26,7 @@ public class DLinkedList implements LinkedList<DNode>{
         return newNode;
     }
 
-
+    // Return the node department using title/id
     @Override
     public DNode getNode(String title)
     {
@@ -53,6 +53,7 @@ public class DLinkedList implements LinkedList<DNode>{
         return null;
     }
 
+    // Return the departments as an array to use it in GUI
     public DNode[] getNodes()
     {
         DNode temp = sentinal.next;
@@ -81,7 +82,6 @@ public class DLinkedList implements LinkedList<DNode>{
     }
 
     /* The Department also should be set to null in SPNode */
-
     @Override
     public void removeNode(int id)
     {

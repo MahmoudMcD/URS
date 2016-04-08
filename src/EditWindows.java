@@ -38,7 +38,7 @@ public class EditWindows {
         TextField studentIdField = new TextField(String.valueOf(student.getId()));
         TextField studentDepIdField = new TextField(String.valueOf(student.getDepid()));
 
-        Label studentNameLabel = new Label("Student Name : ");
+        Label studentNameLabel = new Label("Name : ");
         Label studentEmailLabel = new Label("Email : ");
         Label studentIdLabel = new Label("ID : ");
         Label studentDepIdLabel = new Label("Department ID : ");
@@ -103,7 +103,7 @@ public class EditWindows {
 
         scene = new Scene(layoutCont, 800, 700);
         window.setScene(scene);
-        //window.showAndWait();
+        window.showAndWait();
     }
 
     public static void addCourseToStudent(SPNode student, int courseId, TableView<CNode> table)

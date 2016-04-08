@@ -45,7 +45,7 @@ public class ApplicationGUI extends Application {
     TableColumn<SPNode, String> studentNameColumn, studentEmailColumn;
     TableColumn<SPNode, Integer> studentIdColumn, studentDepColumn;
     TextField studentNameField, studentIdField, studentEmailField, studentDepId;
-    Button studentAddButton, studentDeleteButton;
+    Button studentAddButton, studentDeleteButton, studentEditButton;
 
     //Professor List gui elements
     TableView<SPNode> profsTable;
@@ -53,7 +53,7 @@ public class ApplicationGUI extends Application {
     TableColumn<SPNode, String> profsNameColumn, profsEmailColumn;
     TableColumn<SPNode, Integer> profsIdColumn, profDepIdColumn;
     TextField profsNameField, profsIdField, profsEmailField, profDepIdField;
-    Button profsAddButton, profsDeleteButton;
+    Button profsAddButton, profsDeleteButton, profEditButton;
 
 
     // courses list gui elements
@@ -62,7 +62,7 @@ public class ApplicationGUI extends Application {
     TableColumn<CNode,Integer> courseIdCol,courseNoOfStudentsCol,courseNoOfProfessorsCol;
     HBox coursesTableTools;
     TextField coursesNameTextField,coursesIdTextField;
-    Button coursesAdd,coursesDelete,courseShowStudents,courseShowProfs,courseAddStudent_Prof;
+    Button coursesAdd,coursesDelete,courseShowStudents,courseShowProfs,courseAddStudent_Prof,courseEditButton;
     // end
 
     //removed elements of course info
@@ -105,7 +105,7 @@ public class ApplicationGUI extends Application {
         //for courses
         setCoursesTable();
         //setStudentTable();
-        EditWindows.editStudentWindow(app, 3342);
+        //EditWindows.editStudentWindow(app, 3342);
 
 
         layoutMain.setLeft(tree);
@@ -238,6 +238,9 @@ public class ApplicationGUI extends Application {
         courseShowStudents = new Button("Show Students");
         courseShowProfs = new Button("Show Professors");
         courseAddStudent_Prof = new Button("Add Student/Prof");
+        courseEditButton = new Button("Edit");
+        courseEditButton.setOnAction(e->showCourseEditWindow());
+
         coursesNameTextField = new TextField();
         coursesIdTextField = new TextField();
 
@@ -249,7 +252,8 @@ public class ApplicationGUI extends Application {
 
         coursesTableTools= new HBox(10);
         coursesTableTools.setPadding(new Insets(10, 10, 10, 10));
-        coursesTableTools.getChildren().addAll(coursesNameTextField,coursesIdTextField,coursesAdd,coursesDelete,courseShowStudents,courseShowProfs,courseAddStudent_Prof);
+        coursesTableTools.getChildren().addAll(coursesNameTextField,coursesIdTextField,coursesAdd,coursesDelete,
+                courseShowStudents,courseShowProfs,courseAddStudent_Prof, courseEditButton);
 
         coursesAdd.setOnAction(e -> addCourse());
         coursesDelete.setOnAction(e -> removeCourse());
@@ -565,9 +569,23 @@ public class ApplicationGUI extends Application {
         studentDeleteButton = new Button("Delete");
         studentDeleteButton.setOnAction(e->deleteStudent());
 
+        studentEditButton = new Button("Edit");
+        studentEditButton.setOnAction(e->showStudentEditWindow());
+
         studentsTools.getChildren().addAll(studentIdField, studentNameField, studentEmailField, studentDepId,
-                studentAddButton, studentDeleteButton);
+                studentAddButton, studentDeleteButton, studentEditButton);
         GUIHelpers.setBox(studentsTools);
+    }
+
+    public void showStudentEditWindow()
+    {
+        System.out.println("Hello");
+        ObservableList<SPNode> selectedStudents;
+        selectedStudents = studentsTable.getSelectionModel().getSelectedItems();
+        for(SPNode student: selectedStudents)
+        {
+            EditWindows.editStudentWindow(app, student.getId());
+        }
     }
 
     public void addStudent()
@@ -655,9 +673,22 @@ public class ApplicationGUI extends Application {
         profsDeleteButton = new Button("Delete");
         profsDeleteButton.setOnAction(e->deleteProf());
 
+        profEditButton = new Button("Edit");
+        profEditButton.setOnAction(e->showProEditWindow());
+
         profsTools.getChildren().addAll(profsIdField, profsNameField, profsEmailField, profDepIdField,
-                profsAddButton, profsDeleteButton);
+                profsAddButton, profsDeleteButton, profEditButton);
         GUIHelpers.setBox(profsTools);
+    }
+
+    public void showProEditWindow()
+    {
+        ObservableList<SPNode> selectedProfs;
+        selectedProfs = profsTable.getSelectionModel().getSelectedItems();
+        for (SPNode prof: selectedProfs)
+        {
+            ProfessorEdit.showWindow(app, prof.getId());
+        }
     }
 
     public void deleteProf()
@@ -724,6 +755,17 @@ public class ApplicationGUI extends Application {
 
         }
         selectedCourses.forEach(allCourses::remove);
+    }
+
+
+    public void showCourseEditWindow()
+    {
+        ObservableList<CNode> selectedCourse = coursesTable.getSelectionModel().getSelectedItems();
+        for(CNode course: selectedCourse)
+        {
+            EditCourse.showWindow(app, course.getId());
+            setCoursesTable();
+        }
     }
     //end
 

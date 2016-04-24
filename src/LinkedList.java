@@ -3,7 +3,7 @@
  * this interface is for the linkedlist of all 4 entities
  * Department will have : name - linked list of students - linked list of courses - linked list of professors
  * Student/Professors will have : name - id - email - Department - linked list of courses
- * Courses will have: title - description - department - professor - linkedlist of students
+ * Courses will have: title - description - department - professor - linked list of students
  */
 public interface LinkedList<Type> {
 

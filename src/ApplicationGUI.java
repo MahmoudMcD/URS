@@ -580,7 +580,7 @@ public class ApplicationGUI extends Application {
 
     public void showStudentEditWindow()
     {
-        System.out.println("Hello");
+        //System.out.println("Hello");
         ObservableList<SPNode> selectedStudents;
         selectedStudents = studentsTable.getSelectionModel().getSelectedItems();
         for(SPNode student: selectedStudents)
